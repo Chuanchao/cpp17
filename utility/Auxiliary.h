@@ -17,8 +17,6 @@ auto BootDuration(){
     return tp;
 }
 
-
-
 template<class T>
 auto checktype(const T& param){
     using boost::typeindex::type_id_with_cvr;
