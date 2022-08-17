@@ -7,10 +7,6 @@ set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/output/lib)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/product)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/lib)
 
-#include_directories()
-#link_directories()
-
-
 #add_executable(cpp17 main.cpp)
 #target_compile_options(cpp17 PRIVATE -Werror)
 #target_compile_features(cpp17 PRIVATE cxx_std_17)

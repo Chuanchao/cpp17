@@ -17,6 +17,7 @@ int main(){
     auto fut = std::async(std::launch::async,doAsyncChrono);
     std::cout<<"waiting for future!"<<std::endl;
     auto res = fut.get();
-    auto x{27};
+    auto str = checktype(27);
+    mlogger->info(str);
     return 0;
 }

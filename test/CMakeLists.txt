@@ -9,5 +9,4 @@ target_include_directories(test
         PRIVATE
         ${PROJECT_SOURCE_DIR}/utility
 )
-#target_link_directories(test PRIVATE ${PROJECT_SOURCE_DIR}/output/lib)
-target_link_libraries(test utility spdlog::spdlog)
+target_link_libraries(test PRIVATE utility spdlog::spdlog)
