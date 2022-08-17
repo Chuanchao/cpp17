@@ -3,6 +3,9 @@
 //
 
 #include "Auxiliary.h"
+#include <thread>
+#include <iostream>
+#include <chrono>
 using namespace std;
 
 double doAsyncChrono() noexcept{
