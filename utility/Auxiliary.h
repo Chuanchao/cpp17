@@ -23,8 +23,6 @@ auto checktype(const T& param){
     return type_id_with_cvr<T>().pretty_name();
 }
 
-auto res = static_cast<int>(10.2);
-
 std::vector<std::string> Split(const std::string& str, char delim);
 
 #endif //CPP17_AUXILIARY_H
