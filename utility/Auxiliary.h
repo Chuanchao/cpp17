@@ -22,7 +22,15 @@ auto checktype(const T& param){
     using boost::typeindex::type_id_with_cvr;
     return type_id_with_cvr<T>().pretty_name();
 }
-
 std::vector<std::string> Split(const std::string& str, char delim);
+template<class T>
+std::string processPointer(T* ptr){
+    return "process Pointer is called";
+}
+template<>
+std::string processPointer(void*) = delete;
+template<>
+std::string processPointer(char*) = delete;
+
 
 #endif //CPP17_AUXILIARY_H

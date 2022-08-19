@@ -8,6 +8,7 @@
 #include <future>
 #include <iostream>
 #include <unordered_map>
+#include <atomic>
 using namespace std;
 
 int main(){
@@ -18,5 +19,8 @@ int main(){
     mlogger->info(str);
     auto t = BootDuration();
     std::cout<<t<<std::endl;
+    ostringstream ret;
+    ret<<t;
+    mlogger->info(ret.str());
     return 0;
 }
