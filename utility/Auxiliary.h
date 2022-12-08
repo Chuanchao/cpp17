@@ -6,23 +6,28 @@
 #define CPP17_AUXILIARY_H
 #include <vector>
 #include <string>
+#include <tbb/tbb.h>
 #include <boost/type_index.hpp>
 #include <boost/chrono/chrono_io.hpp>
 
 double doAsyncChrono() noexcept;
-auto BootDuration(){
-    using T = boost::chrono::time_point<boost::chrono::steady_clock,
-    boost::chrono::duration<double, boost::ratio<3600> > >;
-    T tp = boost::chrono::steady_clock::now();
-    return tp;
-}
+std::string BoostDuration();
 
 template<class T>
-auto checktype(const T& param){
+auto checktype(const T& param) {
     using boost::typeindex::type_id_with_cvr;
-    return type_id_with_cvr<T>().pretty_name();
+    return "T is " + type_id_with_cvr<T>().pretty_name() + " and parma is " + type_id_with_cvr<decltype(param)>().pretty_name();
 }
+
+std::string make_daytime_string();
+
+template<typename T, typename U>
+auto max(T x, U y){
+    return (x>y)? x : y;
+}
+
 std::vector<std::string> Split(const std::string& str, char delim);
+
 template<class T>
 std::string processPointer(T* ptr){
     return "process Pointer is called";
@@ -31,6 +36,10 @@ template<>
 std::string processPointer(void*) = delete;
 template<>
 std::string processPointer(char*) = delete;
+
+int getNextID();
+
+//auto flam = [](auto&& params){return std::forward<decltype(params)>(params)};
 
 
 #endif //CPP17_AUXILIARY_H

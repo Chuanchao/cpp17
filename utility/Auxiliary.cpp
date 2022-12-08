@@ -19,6 +19,21 @@ double doAsyncChrono() noexcept{
     return elapsed.count();
 }
 
+
+std::string BoostDuration(){
+    using T = boost::chrono::time_point<boost::chrono::steady_clock,
+            boost::chrono::duration<double, boost::ratio<3600> > >;
+    T tp = boost::chrono::steady_clock::now();
+    std::ostringstream so;
+    so<<tp;
+    return so.str();
+}
+
+std::string make_daytime_string(){
+    time_t now = time(0);
+    return ctime(&now);
+}
+
 std::vector<std::string> Split(const std::string& str, char delim){
     std::vector<std::string> items;
     std::stringstream ss(str);
@@ -28,5 +43,10 @@ std::vector<std::string> Split(const std::string& str, char delim){
         items.push_back(item);
     }
     return items;
+}
+
+int getNextID(){
+    static int id = 0;
+    return ++id;
 }
 

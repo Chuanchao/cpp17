@@ -6,11 +6,15 @@
 #define CPP17_LOGWRAPPER_H
 #include <spdlog/spdlog.h>
 
-class DailyLogger{
+class LoggerBase{
+public:
+    LoggerBase():_logger(spdlog::get("cpp17")){}
+    std::shared_ptr<spdlog::logger> _logger;
+};
+
+class LoggerInit{
 public:
     static bool init(const std::string& procname, spdlog::level::level_enum level);
-    DailyLogger():_logger(spdlog::get("cpp17")){}
-    std::shared_ptr<spdlog::logger> _logger;
 };
 
 
