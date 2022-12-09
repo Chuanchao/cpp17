@@ -9,6 +9,7 @@
 #include <iostream>
 #include "bttimer.h"
 #include <boost/asio.hpp>
+#include "ThreadPool.h"
 using namespace std;
 
 int main(){
@@ -16,11 +17,15 @@ int main(){
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp17");
     auto val = 10;
-    //boost::asio::io_service io;
-    //HFTrading::Repeater rep(io,1);
-    //rep.repeat(5);
-    //io.run();
-    HFTrading::reptimer();
+    auto l1 = [](){this_thread::sleep_for(chrono::seconds(5));return 5;};
+    auto l2 = [](){this_thread::sleep_for(chrono::seconds(10));return 10;};
+
+    ThreadPool pools{2};
+    auto f1 = pools.enqueue(l1);
+    auto f2 = pools.enqueue(l2);
+    mlogger->info("f1 = {}; f2 = {}",f1.get(),f2.get());
+
+    pools.close();
 
     /***
     auto up = make_unique<int>(10);
