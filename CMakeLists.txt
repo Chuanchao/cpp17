@@ -25,6 +25,7 @@ link_directories(
 
 add_subdirectory(test)
 add_subdirectory(utility)
+add_subdirectory(ProtoFile)
 add_subdirectory(grammar)
 add_subdirectory(DataBase)
 add_subdirectory(asioboost)

@@ -16,6 +16,9 @@ int main(){
     Timer t;
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp17");
+    std::vector<int> v;
+    std::iota(v.begin(),v.end(),0);
+
     auto val = 10;
     auto l1 = [](){this_thread::sleep_for(chrono::seconds(5));return 5;};
     auto l2 = [](){this_thread::sleep_for(chrono::seconds(10));return 10;};

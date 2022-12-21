@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package ORDERS;
+
+enum OrderType
+{
+  IOC_ORDER = 0;
+  GFD_ORDER = 1;
+}
+
+enum OrderDirection
+{
+  OPEN_LONG = 0;
+  OPEN_SHORT = 1;
+  CLOSE_LONG = 2;
+  CLOSE_SHORT = 3;
+  CLOSE_TODAY_LONG = 4;
+  CLOSE_TODAY_SHORT = 5;
+  UNKNOWN_TRADE = 6;
+  ORDER_TASK_BUTT = 7;
+}
+
+enum OrderStatus
+{
+  WORK_ORDER = 0;
+  DONE_ORDER = 1;
+  RISKCONTROL_REJECTED = 2;
+  EXCHANGE_REJECTED = 3;
+  NETWORK_ERROR = 4;
+}
+
+
+message SubmitOrder
+{
+  optional string stgyID = 1;
+  optional string prodID = 2;
+  optional string instID = 3;
+  optional int32 amount = 4;
+  optional double price = 5;
+  optional OrderType order_t = 6;
+  optional OrderDirection stgy_d = 7;
+  optional OrderDirection real_d = 8;
+  optional string exchId = 9;
+  optional int64 orderRef = 10;
+
+}
+
+message CancelOrder
+{
+  optional string  stgyID= 1;
+  optional string instID = 2;
+  optional int64 orderRef = 3;
+
+}
+
+message RtnTrade
+{
+  optional string stgyID = 1;
+  optional string prodID = 2;
+  optional string instID = 3;
+  optional int32 tradedAmount = 4;
+  optional double avgPrice = 5;
+  optional OrderType order_t = 6;
+  optional OrderDirection real_d = 7;
+  optional string exchId = 9;
+  optional int64 orderRef = 10;
+}
+
+message RtnOrder
+{
+  optional string stgyID = 1;
+  optional string prodID = 2;
+  optional string instID = 3;
+  optional OrderStatus status = 5;
+  optional OrderDirection stgy_d = 6;
+  optional OrderDirection real_d = 7;
+  optional string exchId = 8;
+  optional int64 orderRef = 9;
+}
