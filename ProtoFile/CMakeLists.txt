@@ -1,7 +1,7 @@
 find_package(Protobuf REQUIRED)
 
 if (Protobuf_FOUND)
-    message("FOUND")
+    message("Protobuf FOUND")
     #message(${Protobuf_INCLUDE_DIR})
 endif()
 
