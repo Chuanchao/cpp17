@@ -1,3 +1,0 @@
-database =[
-    {name = "num2",ip = "203.110.179.34",user = "root",password = "dynamictrading",port = 3306}
-]

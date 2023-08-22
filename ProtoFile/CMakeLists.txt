@@ -1,7 +1,10 @@
 find_package(Protobuf REQUIRED)
+
 if (Protobuf_FOUND)
-    message(${Protobuf_LIBRARIES})
-endif ()
+    message("FOUND")
+    #message(${Protobuf_INCLUDE_DIR})
+endif()
+
 aux_source_directory(. protofile_SRCS)
 add_library(protofile SHARED ${protofile_SRCS})
 

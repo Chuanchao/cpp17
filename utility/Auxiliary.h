@@ -13,7 +13,7 @@
 double doAsyncChrono() noexcept;
 std::string BoostDuration();
 
-template<class T>
+template<typename T>
 auto checktype(const T& param) {
     using boost::typeindex::type_id_with_cvr;
     return "T is " + type_id_with_cvr<T>().pretty_name() + " and parma is " + type_id_with_cvr<decltype(param)>().pretty_name();
@@ -28,7 +28,7 @@ auto max(T x, U y){
 
 std::vector<std::string> Split(const std::string& str, char delim);
 
-template<class T>
+template<typename T>
 std::string processPointer(T* ptr){
     return "process Pointer is called";
 }

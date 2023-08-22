@@ -24,8 +24,6 @@ namespace HFTrading{
         }
     };
 
-
-
     struct mysqlinfo{
        std::string ip;
        unsigned int port;
@@ -39,17 +37,12 @@ namespace HFTrading{
         static std::unique_ptr<DBmysql> CreateDBmysql();
         DBmysql()=default;
         ~DBmysql()=default;
-        void init(const std::string& config="../../config/DBconfig", const std::string& logger="cpp17");
+        void init(const std::string& config="config/DBconfig");
         bool QueryShortScore(const std::string&db, const std::string& date,std::vector<StockScore>& ss);
     private:
         void ParseShortScore(const mysqlpp::StoreQueryResult&,std::vector<StockScore>&);
     private:
-        struct safeconn{
-        mysqlpp::Connection conn{false};
-        std::mutex mtx;
-        };
-        std::shared_ptr<spdlog::logger> m_logger;
-        std::unordered_map<std::string, safeconn> m_dbs;
+        std::unordered_map<std::string, mysqlpp::Connection> m_dbs;
     };
 
 

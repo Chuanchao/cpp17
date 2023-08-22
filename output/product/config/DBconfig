@@ -1,0 +1,3 @@
+database =[
+    {name = "num2",ip = "120.136.165.245",user = "root",password = "dynamictrading",port = 3306}
+]

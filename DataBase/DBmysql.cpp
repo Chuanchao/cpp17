@@ -13,8 +13,7 @@ namespace HFTrading {
         return std::make_unique<DBmysql>();
     }
 
-    void DBmysql::init(const std::string &config, const std::string &logger) {
-        m_logger = spdlog::get(logger.c_str());
+    void DBmysql::init(const std::string &config) {
         toml::table tbl;
         try {
             //auto db = "../../config/DBconfig";
@@ -41,15 +40,17 @@ namespace HFTrading {
             }
         }
         for (const auto &db: dbinfos) {
-            m_dbs.emplace(std::piecewise_construct, std::forward_as_tuple(db.name), std::forward_as_tuple());
-            m_dbs[db.name].conn.set_option(new mysqlpp::ReconnectOption(true));
+            m_dbs.emplace(std::piecewise_construct,
+                          std::forward_as_tuple(db.name),
+                          std::forward_as_tuple(false));
+            m_dbs[db.name].set_option(new mysqlpp::ReconnectOption(true));
             try {
-                m_dbs[db.name].conn.connect(db.name.c_str(), db.ip.c_str(), db.user.c_str(), db.password.c_str(),
+                m_dbs[db.name].connect(db.name.c_str(), db.ip.c_str(), db.user.c_str(), db.password.c_str(),
                                             db.port);
-                m_logger->info("connect to {} successed!", db.name);
+                _logger->info("connect to {} successed!", db.name);
             }
             catch (mysqlpp::BadQuery &ex) {
-                m_logger->error("Mysql connect error:{}", ex.what());
+                _logger->error("Mysql connect error:{}", ex.what());
             }
         }
 
@@ -57,17 +58,16 @@ namespace HFTrading {
     }
 
     bool DBmysql::QueryShortScore(const std::string &db, const std::string &date, std::vector<StockScore> &ss) {
-        char *buff = new char[500];
-        sprintf(buff, "select * from shortside where tradedate = '%s' order by score asc;", date.c_str());
-        m_logger->info("DBMysql::QueryShortScore");
+        char *buff = new char[300];
+        snprintf(buff, 500, "select * from shortside where tradedate = '%s' order by score asc;", date.c_str());
+        _logger->info("DBMysql::QueryShortScore");
         function<void(const mysqlpp::StoreQueryResult &, vector<StockScore> &)> func
                 = bind(&DBmysql::ParseShortScore, this, placeholders::_1, placeholders::_2);
         try {
-            auto lk = lock_guard<mutex>(m_dbs.at(db).mtx);
-            return queryByStore(buff, ss, m_dbs.at(db).conn, func);
+            return queryByStore(buff, ss, m_dbs.at(db), func);
         }
         catch (const out_of_range &ex) {
-            m_logger->warn(ex.what());
+            _logger->warn(ex.what());
             return false;
         }
     }

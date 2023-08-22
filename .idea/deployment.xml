@@ -2,10 +2,10 @@
 <project version="4">
   <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="139.196.255.209 (37569db5-56c8-46ca-87ba-ca85d2cbef4d)">
+      <paths name="otc (5cf27879-0527-49e0-ba94-da48080e06f7)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.AYEI7ohvNC" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/otc/lyu/hftrading" local="$PROJECT_DIR$" web="/" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />

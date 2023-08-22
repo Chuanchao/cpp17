@@ -7,11 +7,10 @@
 
 bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum level) {
     std::string filepath = "/Users/chuanchao/Desktop/Programming/Logs/" + procname + "/" +procname;
-    auto txt_logger = spdlog::daily_logger_mt("cpp17",filepath,18);
+    auto txt_logger = spdlog::daily_logger_mt("cpp20",filepath,18);
     txt_logger->set_pattern("[%C-%m-%d %H:%M:%S.%f pid:%#{%t}]<%l> %v");
     txt_logger->set_level(level);
-
-    txt_logger->info("/***********cpp17 running**************/");
+    txt_logger->info("/***********cpp20 running**************/");
 
     return true;
 

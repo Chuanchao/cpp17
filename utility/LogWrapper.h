@@ -8,7 +8,7 @@
 
 class LoggerBase{
 public:
-    LoggerBase():_logger(spdlog::get("cpp17")){}
+    LoggerBase():_logger{spdlog::get("cpp20")}{}
     std::shared_ptr<spdlog::logger> _logger;
 };
 
