@@ -31,7 +31,7 @@ message(${CMAKE_MODULE_PATH})
 #target_compile_features(cpp17 PRIVATE cxx_std_17)
 #target_include_directories(cpp17 PUBLIC${PROJECT_SOURCE_DIR}/utility)
 
-#add_subdirectory(Entry)
+add_subdirectory(Entry)
 add_subdirectory(utility)
 #add_subdirectory(ProtoFile)
 add_subdirectory(grammar)

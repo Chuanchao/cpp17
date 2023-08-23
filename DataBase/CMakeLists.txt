@@ -6,19 +6,21 @@ if (CMAKE_HOST_WIN32)
 elseif(CMAKE_HOST_APPLE)
     set(MACOS 1)
     message("System is MACOS in DataBase")
-    target_include_directories(DataBaseManager
-            PUBLIC
-            ${PROJECT_SOURCE_DIR}/utility
-            /usr/local/include/mysql
-            )
+    set(mysql_path "/usr/local/include/mysql")
+    message(${mysql_path})
 elseif(CMAKE_HOST_UNIX)
-    message("System is Linuxin DataBase")
+    message("System is Linux in DataBase")
     set(LINUX 1)
-    target_include_directories(DataBaseManager
-            PUBLIC
-            ${PROJECT_SOURCE_DIR}/utility
-            /usr/include/mysql
-            )
+    set(mysql_path "/usr/include/mysql")
+    message(${mysql_path})
 endif()
+
+target_include_directories(DataBaseManager
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}/utility
+        ${mysql_path}
+        )
+
+
 
 target_link_libraries(DataBaseManager PUBLIC mysqlpp utility)

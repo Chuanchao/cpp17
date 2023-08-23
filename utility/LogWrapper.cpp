@@ -4,9 +4,20 @@
 
 #include "LogWrapper.h"
 #include <spdlog/sinks/daily_file_sink.h>
+#include "Auxiliary.h"
+#include <iostream>
 
 bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum level) {
-    std::string filepath = "/Users/chuanchao/Desktop/Programming/Logs/" + procname + "/" +procname;
+    auto sysname = getsysname();
+    std::string wpath;
+    if(!sysname.has_value()) return false;
+    if(sysname.value() == "Linux"){
+        wpath = "/mnt/c/Users/ChuanchaoLyu/Desktop/Algorithms/Logs/";
+    }
+    if(sysname.value() == "Darwin"){
+        wpath = "/Users/chuanchao/Desktop/Programming/Logs/";
+    }
+    std::string filepath = wpath + procname + "/" +procname;
     auto txt_logger = spdlog::daily_logger_mt("cpp20",filepath,18);
     txt_logger->set_pattern("[%C-%m-%d %H:%M:%S.%f pid:%#{%t}]<%l> %v");
     txt_logger->set_level(level);

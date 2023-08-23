@@ -18,9 +18,8 @@ if (CMAKE_HOST_WIN32)
 elseif(CMAKE_HOST_APPLE)
     set(MACOS 1)
     message("System is MACOS in utility")
-
 elseif(CMAKE_HOST_UNIX)
-    message("System is Linuxin utility")
+    message("System is Linux in utility")
     set(LINUX 1)
 endif()
 

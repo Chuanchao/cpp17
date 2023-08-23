@@ -29,6 +29,15 @@ std::string BoostDuration(){
     return so.str();
 }
 
+
+optional<string> getsysname(){
+    struct utsname system_info;
+    if (uname(&system_info) == 0) return system_info.sysname;
+    return nullopt;
+}
+
+
+
 std::string make_daytime_string(){
     time_t now = time(0);
     return ctime(&now);

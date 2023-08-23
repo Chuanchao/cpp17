@@ -10,9 +10,14 @@
 #include <boost/type_index.hpp>
 #include <boost/chrono/chrono_io.hpp>
 #include <zmq.hpp>
+#include <sys/utsname.h>
+#include <optional>
 
 double doAsyncChrono() noexcept;
 std::string BoostDuration();
+std::optional<std::string> getsysname();
+
+
 
 template<typename T>
 auto checktype(const T& param) {
