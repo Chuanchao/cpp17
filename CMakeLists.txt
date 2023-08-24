@@ -1,12 +1,5 @@
-if (CMAKE_HOST_WIN32)
-    set(WINDOWS 1)
-elseif(CMAKE_HOST_APPLE)
-    set(MACOS 1)
-    cmake_minimum_required(VERSION 3.23)
-elseif(CMAKE_HOST_UNIX)
-    set(LINUX 1)
-    cmake_minimum_required(VERSION 3.22)
-endif()
+cmake_minimum_required(VERSION 3.22)
+
 project(OrderTest)
 
 set(CMAKE_CXX_STANDARD 20)
@@ -33,11 +26,10 @@ message(${CMAKE_MODULE_PATH})
 
 add_subdirectory(Entry)
 add_subdirectory(utility)
-#add_subdirectory(ProtoFile)
+add_subdirectory(ProtoFile)
 add_subdirectory(grammar)
 add_subdirectory(DataBase)
 add_subdirectory(asioboost)
-
 message(${CMAKE_PROJECT_NAME})
 #message(${CMAKE_CXX_FLAGS})
 #library does not use imported target, normally defined
