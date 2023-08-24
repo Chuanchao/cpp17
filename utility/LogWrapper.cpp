@@ -8,7 +8,7 @@
 #include <iostream>
 
 bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum level) {
-    auto sysname = getsysname();
+    auto sysname = utility::getsysname();
     std::string wpath;
     if(!sysname.has_value()) return false;
     if(sysname.value() == "Linux"){

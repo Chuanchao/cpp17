@@ -14,7 +14,7 @@
 using namespace std;
 
 int main(){
-    Timer t;
+    utility::Timer t;
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp20");
     std::vector<int> v;
@@ -24,7 +24,7 @@ int main(){
     auto l1 = [](){this_thread::sleep_for(chrono::seconds(5));return 5;};
     auto l2 = [](){this_thread::sleep_for(chrono::seconds(10));return 10;};
 
-    ThreadPool pools{2};
+    utility::ThreadPool pools{2};
     auto f1 = pools.enqueue(l1);
     auto f2 = pools.enqueue(l2);
     mlogger->info("f1 = {}; f2 = {}",f1.get(),f2.get());

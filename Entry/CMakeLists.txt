@@ -21,4 +21,5 @@ target_include_directories(hftrading
 target_link_libraries(hftrading
         PRIVATE
         DataBaseManager
+        utility
         )
