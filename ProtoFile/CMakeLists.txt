@@ -15,4 +15,5 @@ add_library(protofile SHARED ${protofile_SRCS})
 
 target_link_libraries(protofile
         PUBLIC
-        protobuf::libprotobuf)
+        protobuf::libprotobuf
+        )
