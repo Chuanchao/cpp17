@@ -27,7 +27,7 @@ private:
     std::atomic_bool _shutdown{false};
     //zmq::context_t& _context;
     //int _port;
-    std::future<bool> _fut;
+    std::future<bool> _pubfut;
     //std::shared_ptr<std::thread> _thread;
     AtomicQueue<std::shared_ptr<Message>> _buff;
 

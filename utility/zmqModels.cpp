@@ -9,7 +9,7 @@
 using namespace std;
 
 zmqPub::zmqPub(zmq::context_t & io, int port) {
-    _fut = std::async(launch::async,[this,&io,port](){return pubthread(io,port);});
+    _pubfut = std::async(launch::async,[this,&io,port](){return pubthread(io,port);});
 }
 
 zmqPub::~zmqPub() {
@@ -19,7 +19,7 @@ zmqPub::~zmqPub() {
 void zmqPub::shutdown() {
     _shutdown = true;
     _buff.close();
-    auto ret = _fut.get();
+    auto ret = _pubfut.get();
 }
 
 bool zmqPub::pubthread(zmq::context_t& io,int port) {
