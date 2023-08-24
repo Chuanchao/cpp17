@@ -41,13 +41,19 @@ public:
         m_stop = true;
         m_cv.notify_all();
     }
-    void push(T val){
-        std::unique_lock lk(m_mtx);
+    void push(const T& val){
+        std::unique_lock lk{m_mtx};
         m_data.push(val);
         m_cv.notify_all();
     }
 
-    void waitforpush(T val, int sz){
+    void push(const std::vector<T>& vals){
+        std::unique_lock lk{m_mtx};
+        m_data.insert(m_data.end(),vals.begin(),vals.end());
+        m_cv.notify_all();
+    }
+
+    void waitforpush(const T& val, int sz){
         while(!m_stop and m_data.size() > sz){
             std::this_thread::sleep_for(std::chrono::milliseconds (500));
         }
@@ -67,7 +73,6 @@ public:
            return std::nullopt;
         }
     }
-
 
     std::optional<T> try_pop(){
         std::unique_lock lk(m_mtx);

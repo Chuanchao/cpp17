@@ -1,5 +1,5 @@
 find_package(Protobuf REQUIRED)
-
+find_package(cppzmq REQUIRED)
 if (Protobuf_FOUND)
     message("Protobuf FOUND")
     #message(${Protobuf_INCLUDE_DIR})
@@ -12,8 +12,9 @@ elseif(CMAKE_HOST_UNIX)
     aux_source_directory(../protoLinux protofile_SRCS)
 endif()
 add_library(protofile SHARED ${protofile_SRCS})
-
+#message(${h_path})
 target_link_libraries(protofile
         PUBLIC
         protobuf::libprotobuf
+        cppzmq
         )

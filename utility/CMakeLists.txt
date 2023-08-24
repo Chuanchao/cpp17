@@ -11,17 +11,22 @@ target_link_libraries(utility
         Boost::chrono
         TBB::tbb
         cppzmq
+        protofile
         )
 
 if (CMAKE_HOST_WIN32)
     set(WINDOWS 1)
 elseif(CMAKE_HOST_APPLE)
     set(MACOS 1)
-    message("System is MACOS in utility")
+    set(proto_path "ProtoMac")
 elseif(CMAKE_HOST_UNIX)
-    message("System is Linux in utility")
     set(LINUX 1)
+    set(proto_path "ProtoLinux")
 endif()
+message(${proto_path})
+target_include_directories(utility
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}/${proto_path})
 
 #if(MACOS)
 #    message("System is MACOS in utility")

@@ -9,7 +9,6 @@
 #include <tbb/tbb.h>
 #include <boost/type_index.hpp>
 #include <boost/chrono/chrono_io.hpp>
-#include <zmq.hpp>
 #include <sys/utsname.h>
 #include <optional>
 
