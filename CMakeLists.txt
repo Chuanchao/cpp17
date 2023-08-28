@@ -25,6 +25,7 @@ message(${CMAKE_MODULE_PATH})
 #target_include_directories(cpp17 PUBLIC${PROJECT_SOURCE_DIR}/utility)
 
 add_subdirectory(Entry)
+add_subdirectory(Gateway)
 add_subdirectory(utility)
 add_subdirectory(ProtoFile)
 add_subdirectory(grammar)
