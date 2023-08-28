@@ -14,26 +14,33 @@
 
 #include "AtomicQueue.h"
 
-class zmqPub{
-public:
-    //static std::shared_ptr<zmqPub> CreatezmqPub(zmq::context_t&,int);
-    using Message = google::protobuf::Message;
-    zmqPub(zmq::context_t&,int port);
-    ~zmqPub();
-    void shutdown();
-private:
-    bool pubthread(zmq::context_t&,int port);
-private:
-    std::atomic_bool _shutdown{false};
-    //zmq::context_t& _context;
-    //int _port;
-    std::future<bool> _pubfut;
-    //std::shared_ptr<std::thread> _thread;
-    AtomicQueue<std::shared_ptr<Message>> _buff;
+namespace utility {
 
-};
+    class zmqPub {
+    public:
+        //static std::shared_ptr<zmqPub> CreatezmqPub(zmq::context_t&,int);
+        using Message = google::protobuf::Message;
 
+        zmqPub(zmq::context_t &, int port);
 
+        ~zmqPub();
+
+        void shutdown();
+
+    private:
+        bool pubthread(zmq::context_t &, int port);
+
+    private:
+        std::atomic_bool _shutdown{false};
+        //zmq::context_t& _context;
+        //int _port;
+        std::future<bool> _pubfut;
+        //std::shared_ptr<std::thread> _thread;
+        AtomicQueue<std::shared_ptr<Message>> _buff;
+
+    };
+
+}
 
 
 

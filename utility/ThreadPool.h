@@ -12,25 +12,24 @@
 #include <functional>
 #include <stdexcept>
 
+namespace utility {
 
-
-    class ThreadPool{
+    class ThreadPool {
     public:
         ThreadPool(size_t threads)
-                :_stop(false)
-        {
-            if(threads <= 0){
+                : _stop(false) {
+            if (threads <= 0) {
                 threads = std::thread::hardware_concurrency();
             }
-            _maxTasks = 100*threads;
+            _maxTasks = 100 * threads;
             for (size_t i = 0; i < threads; ++i)
-                _workers.emplace_back([this]{threadWork();});
+                _workers.emplace_back([this] { threadWork(); });
         }
 
         template<class F, class... Args>
-        auto enqueue(F&& f, Args&&... args);
+        auto enqueue(F &&f, Args &&... args);
 
-        int size(){
+        int size() {
             return _tasks.size();
         }
 
@@ -38,45 +37,44 @@
             _stop = true;
             _tasks.close();
             for (auto &t: _workers) {
-                if(t.joinable()) t.join();
+                if (t.joinable()) t.join();
             }
         }
 
-        ~ThreadPool(){
+        ~ThreadPool() {
             close();
         }
 
     private:
         void threadWork();
+
     private:
         std::atomic<bool> _stop;
         std::atomic<size_t> _maxTasks;
 
         std::vector<std::thread> _workers;
-        AtomicQueue< std::function<void()> > _tasks;
+        AtomicQueue<std::function<void()> > _tasks;
 
         // synchronization
         std::condition_variable _conditionEnqueue;
     };
 
-    inline void ThreadPool::threadWork()
-    {
-        while(!_stop){
+    inline void ThreadPool::threadWork() {
+        while (!_stop) {
             auto task = _tasks.waitforpop();
-            if(task){
+            if (task) {
                 task.value()();
             }
         }
     }
 
     template<class F, class... Args>
-    auto ThreadPool::enqueue(F&& f, Args&&... args)
-    {
+    auto ThreadPool::enqueue(F &&f, Args &&... args) {
         using return_type = decltype(std::forward<F>(f)(std::forward<Args>(args)...));
         if (_stop)
             throw std::runtime_error("enqueue on stopped ThreadPool");
 
-        auto task = std::make_shared< std::packaged_task<return_type()> >(
+        auto task = std::make_shared<std::packaged_task<return_type()> >(
                 std::bind(std::forward<F>(f), std::forward<Args>(args)...)
         );
 
@@ -84,5 +82,5 @@
         _tasks.waitforpush([task]() { (*task)(); }, _maxTasks);
         return res;
     }
-
+}
 #endif //CPP17_THREADPOOL_H

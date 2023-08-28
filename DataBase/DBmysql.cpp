@@ -43,7 +43,7 @@ namespace HFTrading {
             m_dbs.emplace(std::piecewise_construct,
                           std::forward_as_tuple(db.name),
                           std::forward_as_tuple(false));
-            m_dbs[db.name].set_option(new mysqlpp::ReconnectOption(true));
+            //m_dbs[db.name].set_option(new mysqlpp::ReconnectOption(true));
             try {
                 m_dbs[db.name].connect(db.name.c_str(), db.ip.c_str(), db.user.c_str(), db.password.c_str(),
                                             db.port);

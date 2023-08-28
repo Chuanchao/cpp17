@@ -7,6 +7,7 @@
 #include <iostream>
 
 using namespace std;
+using namespace utility;
 
 zmqPub::zmqPub(zmq::context_t & io, int port) {
     _pubfut = std::async(launch::async,[this,&io,port](){return pubthread(io,port);});
