@@ -25,7 +25,7 @@ namespace gateway{
 
     void CTPOrderGateway::init(const string& file) {
         _logger->info("CTPOrderGateway::Init");
-        _tradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi();
+        _tradeApi = CThostFtdcTraderApi::CreateFtdcTraderApi("logs");
         _tradeApi->RegisterSpi(this);
         _tradeApi->SubscribePrivateTopic(THOST_TERT_RESTART);
         _tradeApi->SubscribePublicTopic(THOST_TERT_RESTART);
