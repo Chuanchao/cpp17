@@ -1,5 +1,4 @@
 find_package(Protobuf REQUIRED)
-find_package(cppzmq REQUIRED)
 if (Protobuf_FOUND)
     message("Protobuf FOUND")
     #message(${Protobuf_INCLUDE_DIR})
@@ -16,5 +15,4 @@ add_library(protofile SHARED ${protofile_SRCS})
 target_link_libraries(protofile
         PUBLIC
         protobuf::libprotobuf
-        cppzmq
         )

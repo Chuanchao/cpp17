@@ -5,13 +5,14 @@ target_include_directories(OrderGateway
         PUBLIC
         ${PROJECT_SOURCE_DIR}/utility
         ${PROJECT_SOURCE_DIR}/Gateway
-        ${PROJECT_SOURCE_DIR}/Gateway/ctp_mac
+        ${PROJECT_SOURCE_DIR}/Gateway/ctp_linux
         )
 target_link_directories(OrderGateway
         PUBLIC
-        ${PROJECT_SOURCE_DIR}/Gateway/ctp_mac
+        ${PROJECT_SOURCE_DIR}/Gateway/ctp_linux
         )
 target_link_libraries(OrderGateway
         PUBLIC
-        thosttraderapi
+        utility
+        thosttraderapi_se
         )

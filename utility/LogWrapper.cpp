@@ -12,7 +12,8 @@ bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum lev
     std::string wpath;
     if(!sysname.has_value()) return false;
     if(sysname.value() == "Linux"){
-        wpath = "/mnt/c/Users/ChuanchaoLyu/Desktop/Algorithms/Logs/";
+        //wpath = "/mnt/c/Users/ChuanchaoLyu/Desktop/Algorithms/Logs/";
+        wpath = "/home/otc/Logs/";
     }
     if(sysname.value() == "Darwin"){
         wpath = "/Users/chuanchao/Desktop/Programming/Logs/";

@@ -10,6 +10,7 @@
 
 namespace gateway{
     class OrderGatewayListener{
+    public:
         using Message = google::protobuf::Message;
         virtual ~OrderGatewayListener()=default;
         virtual void OnOrderFill(std::shared_ptr<Message>) = 0;

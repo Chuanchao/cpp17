@@ -8,26 +8,30 @@
 #include <mutex>
 #include <condition_variable>
 
-struct Monitor{
-    std::atomic<bool> _status{false};
-    std::mutex _mtx;
-    std::condition_variable _cv;
-};
-struct UserInfo{
-    std::string _brokerID;
-    std::string _userID;
-    std::string _password;
-    std::string _appid;
-    std::string _authcode;
-};
+namespace gateway {
 
-struct ctpStatus{
-    int _frontID;
-    int _SessionID;
-    int64_t _maxorderref;
-    std::atomic<int> _requestID;
-    std::atomic<bool> _isConnected;
-};
+    struct Monitor {
+        std::atomic<bool> status{false};
+        std::mutex mtx;
+        std::condition_variable cv;
+    };
+    struct UserInfo {
+        std::string ip;
+        int port{0};
+        std::string brokerID;
+        std::string userID;
+        std::string password;
+        std::string appid;
+        std::string authcode;
+    };
 
+    struct ctpStatus {
+        int frontID{0};
+        int SessionID{0};
+        int64_t maxorderref{0};
+        std::atomic<int> requestID{0};
+        std::atomic<bool> isConnected{0};
+    };
 
+}
 #endif //ORDERTEST_CTPDATA_H

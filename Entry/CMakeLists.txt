@@ -2,16 +2,12 @@ add_executable(testcpp testcpp.cpp)
 add_executable(hftrading hftrading.cpp)
 target_include_directories(testcpp
         PRIVATE
-        ${PROJECT_SOURCE_DIR}/utility
-        ${PROJECT_SOURCE_DIR}/grammar
-        ${PROJECT_SOURCE_DIR}/asioboost
+        ${PROJECT_SOURCE_DIR}/Gateway/OrderGateway
 )
 
 target_link_libraries(testcpp
         PRIVATE
-        utility
-        grammar
-        basio
+        OrderGateway
         )
 
 target_include_directories(hftrading

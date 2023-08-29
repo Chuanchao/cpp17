@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.22)
+cmake_minimum_required(VERSION 3.16)
 
 project(OrderTest)
 
@@ -10,10 +10,12 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/lib)
 
 include_directories(
         /usr/local/include
+        /usr/include
 )
 
 link_directories(
         /usr/local/lib
+        /usr/lib
 )
 
 
