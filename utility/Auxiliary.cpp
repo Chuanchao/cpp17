@@ -6,6 +6,7 @@
 #include <thread>
 #include <iostream>
 #include <chrono>
+#include <unistd.h>
 using namespace std;
 namespace utility {
 
@@ -37,6 +38,12 @@ namespace utility {
         return nullopt;
     }
 
+    std::string GetCurrentWorkingDir(){
+        char buff[FILENAME_MAX];
+        getcwd( buff, FILENAME_MAX );
+        std::string current_working_dir(buff);
+        return current_working_dir;
+    }
 
     std::string make_daytime_string() {
         time_t now = time(0);

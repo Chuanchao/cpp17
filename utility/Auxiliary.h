@@ -20,6 +20,7 @@ namespace utility {
 
     std::optional<std::string> getsysname();
 
+    std::string GetCurrentWorkingDir();
 
     template<typename T>
     auto checktype(const T &param) {

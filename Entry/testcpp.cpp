@@ -1,7 +1,7 @@
 //
 // Created by Chuanchao Lyu on 2022/8/13.
 //
-
+#include "Auxiliary.h"
 #include "Timer.h"
 #include "CTPOrderGateway.h"
 #include <iostream>
@@ -14,6 +14,7 @@ int main(){
     auto mlogger = spdlog::get("cpp20");
     auto pgw = gateway::CTPOrderGateway::CreateCTPTradeApi();
     pgw->init("config/ctpconfig");
+
 
     mlogger->info("Time elapsed: {}",t.elapsed());
     return 0;

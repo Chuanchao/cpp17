@@ -9,11 +9,13 @@
 
 bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum level) {
     auto sysname = utility::getsysname();
+    //auto username = static_cast<std::string>(getlogin());
     std::string wpath;
     if(!sysname.has_value()) return false;
     if(sysname.value() == "Linux"){
-        //wpath = "/mnt/c/Users/ChuanchaoLyu/Desktop/Algorithms/Logs/";
-        wpath = "/home/otc/Logs/";
+        //wpath = "/home/" + username + "/logs/";
+        wpath = "/mnt/c/Users/ChuanchaoLyu/Desktop/Algorithms/Logs/";
+        //wpath = "/home/otc/Logs/";
     }
     if(sysname.value() == "Darwin"){
         wpath = "/Users/chuanchao/Desktop/Programming/Logs/";
