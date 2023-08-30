@@ -7,6 +7,7 @@
 #include <iostream>
 #include <chrono>
 #include <unistd.h>
+#include <ctime>
 using namespace std;
 namespace utility {
 
@@ -36,6 +37,15 @@ namespace utility {
         struct utsname system_info;
         if (uname(&system_info) == 0) return system_info.sysname;
         return nullopt;
+    }
+
+    std::string nowString(){
+        auto tp = std::chrono::system_clock::now();
+        std::time_t tt = std::chrono::system_clock::to_time_t(tp);
+        std::tm tms = *std::localtime(&tt);
+        char buffer[80];
+        std::strftime(buffer,sizeof(buffer),"%Y-%m-%d %H:%M:%S",&tms);
+        return buffer;
     }
 
     std::string GetCurrentWorkingDir(){

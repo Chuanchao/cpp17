@@ -6,7 +6,6 @@
 #define CPP17_AUXILIARY_H
 #include <vector>
 #include <string>
-#include <tbb/tbb.h>
 #include <boost/type_index.hpp>
 #include <boost/chrono/chrono_io.hpp>
 #include <sys/utsname.h>
@@ -19,6 +18,7 @@ namespace utility {
     std::string BoostDuration();
 
     std::optional<std::string> getsysname();
+    std::string nowString();
 
     std::string GetCurrentWorkingDir();
 

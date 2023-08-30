@@ -6,6 +6,9 @@
 #include "DBmysql.h"
 #include "Timer.h"
 #include "config.h"
+#include "zmqModels.h"
+#include "transfer_message.pb.h"
+
 
 
 int main(int argc, char* argv[]){
@@ -17,21 +20,6 @@ int main(int argc, char* argv[]){
     for(int count=0;count<argc;count++){
         std::cout<< count << ' ' <<argv[count]<<std::endl;
     }
-    */;
-
-    Config config("config/ctpconfig");
-
-    auto ip = config.pString("tdip");
-    auto port = config.pInt("tdport");
-    auto brokerID = config.pString("tdbrokerid");
-    auto userID = config.pString("tduserid");
-    auto password = config.pString("tdpassword");
-    auto appid = config.pString("appid");
-    auto authcode = config.pString("authcode");
-    mlogger->info("{}; {} ;{}",ip,port,brokerID);
-
-
-
     std::vector<HFTrading::StockScore> ss;
     std::shared_ptr<HFTrading::DBmysql> pdb = HFTrading::DBmysql::CreateDBmysql();
     pdb->init();
@@ -40,5 +28,24 @@ int main(int argc, char* argv[]){
         std::cout<<s;
        mlogger->info(s.toString());
     }
+    */
+    using Message = google::protobuf::Message;
+    zmq::context_t context{1};
+    utility::AtomicQueue<shared_ptr<Message>> buffer;
+    auto sub = utility::zmqSub(buffer);
+    vector<string> adds;
+    adds.push_back("tcp://localhost:7000");
+    sub.init(context,adds);
+    while(true){
+        auto msg = buffer.waitforpop();
+        if (msg.has_value()){
+            auto pmsg = dynamic_pointer_cast<transfer::infoString>(msg.value());
+            mlogger->info("{}  {}",pmsg->GetDescriptor()->full_name(), pmsg->msg());
+            cout<<pmsg->msg()<<endl;
+
+        }
+    }
+
+
     mlogger->info("The Program runing for {} seconds!",t.elapsed());
 }
