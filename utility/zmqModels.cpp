@@ -65,7 +65,7 @@ void zmqSub::init(zmq::context_t & io , const std::vector<std::string> & adds) {
     _subfut = std::async(launch::async,[this,&io,&adds](){return subthread(io,adds);});
 }
 
-bool zmqSub::subthread(zmq::context_t &io, const std::vector<std::string> &adds) {
+bool zmqSub::subthread(zmq::context_t &io, const std::vector<std::string>& adds) {
     _logger->info("Launching zmqSub thread!");
     zmq::socket_t sub{io, zmq::socket_type::sub};
     for(const auto& add:adds){
@@ -80,6 +80,7 @@ bool zmqSub::subthread(zmq::context_t &io, const std::vector<std::string> &adds)
                 if (pmsg) {
                     //_logger->info("DataBaseManager::ListenThread,recv message name {}, count = {}",
                     //              protoMessage->GetDescriptor()->name(),++i);
+                    //_logger->info("{}",pmsg->GetDescriptor()->full_name());
                     _buff.push(pmsg);
                 } else {
                     _logger->warn("subthread Failed to Parse Message");
@@ -94,6 +95,34 @@ bool zmqSub::subthread(zmq::context_t &io, const std::vector<std::string> &adds)
     sub.close();
     _logger->info("sub thread close!");
     return true;
+}
+
+
+msgProcessor::msgProcessor(AtomicQueue<std::shared_ptr<Message>> &buff):_buff{buff} {
+    _prsfut = std::async(launch::async,[this](){return prsthread();});
+}
+msgProcessor::~msgProcessor() {
+    _shutdown = true;
+    auto ret = _prsfut.get();
+}
+
+void msgProcessor::rgshandles(const std::string & name, function<void(std::shared_ptr<Message>)> f) {
+    _handles[name] = f;
+}
+
+bool msgProcessor::prsthread() {
+    _logger->info("prsThread, Launching");
+    size_t count = 0;
+    while (!_shutdown) {
+        auto msg = _buff.waitforpop();
+        if (msg.has_value()) {
+            auto handler = _handles.find(msg.value()->GetDescriptor()->full_name());
+            if (handler != _handles.end()) {
+                handler->second(msg.value());
+            }
+        }
+    }
+    _logger->info("prsThread Closed!");
 }
 
 

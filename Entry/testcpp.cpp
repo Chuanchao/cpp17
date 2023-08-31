@@ -22,7 +22,7 @@ int main(){
         pub.PutInfo(ss);
         using namespace std::literals;
         //this_thread::sleep_for(chrono::seconds(1));
-        this_thread::sleep_for(1s);
+        this_thread::sleep_for(3s);
         cout<<ss<<endl;
     }
 

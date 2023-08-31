@@ -9,7 +9,7 @@
 #include "zmqModels.h"
 #include "transfer_message.pb.h"
 
-
+using namespace std::literals;
 
 int main(int argc, char* argv[]){
     utility::Timer t{};
@@ -29,23 +29,24 @@ int main(int argc, char* argv[]){
        mlogger->info(s.toString());
     }
     */
-    using Message = google::protobuf::Message;
     zmq::context_t context{1};
+    using Message = google::protobuf::Message;
     utility::AtomicQueue<shared_ptr<Message>> buffer;
     auto sub = utility::zmqSub(buffer);
     vector<string> adds;
     adds.push_back("tcp://localhost:7000");
     sub.init(context,adds);
-    while(true){
-        auto msg = buffer.waitforpop();
-        if (msg.has_value()){
-            auto pmsg = dynamic_pointer_cast<transfer::infoString>(msg.value());
-            mlogger->info("{}  {}",pmsg->GetDescriptor()->full_name(), pmsg->msg());
-            cout<<pmsg->msg()<<endl;
-
-        }
-    }
 
 
+    auto proc = utility::msgProcessor(buffer);
+    auto handle = [mlogger](shared_ptr<Message> msg){
+        auto pmsg = dynamic_pointer_cast<transfer::infoString>(msg);
+        mlogger->info("{}",pmsg->msg());
+    };
+    proc.rgshandles(transfer::infoString::descriptor()->full_name(),handle);
+
+
+    this_thread::sleep_for(30s);
+    buffer.close();
     mlogger->info("The Program runing for {} seconds!",t.elapsed());
 }

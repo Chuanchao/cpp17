@@ -24,6 +24,7 @@ bool LoggerInit::init(const std::string &procname, spdlog::level::level_enum lev
     auto txt_logger = spdlog::daily_logger_mt("cpp20",filepath,18);
     txt_logger->set_pattern("[%C-%m-%d %H:%M:%S.%f pid:%#{%t}]<%l> %v");
     txt_logger->set_level(level);
+    txt_logger->flush_on(spdlog::level::info);
     txt_logger->info("/***********cpp20 running**************/");
 
     return true;

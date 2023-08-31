@@ -10,6 +10,8 @@
 #include <memory>
 #include <atomic>
 #include <future>
+#include <functional>
+#include <unordered_map>
 #include <google/protobuf/message.h>
 
 #include "LogWrapper.h"
@@ -29,7 +31,6 @@ namespace utility {
     private:
         std::atomic_bool _shutdown{false};
         std::future<bool> _pubfut;
-        //std::shared_ptr<std::thread> _thread;
         AtomicQueue<std::shared_ptr<Message>> _buff;
     };
 
@@ -37,7 +38,7 @@ namespace utility {
     class zmqSub:private LoggerBase{
     public:
         using Message = google::protobuf::Message;
-        zmqSub(AtomicQueue<std::shared_ptr<Message>>&);
+        explicit zmqSub(AtomicQueue<std::shared_ptr<Message>>&);
         void init(zmq::context_t& io,const std::vector<std::string>&);
         ~zmqSub();
     private:
@@ -48,19 +49,20 @@ namespace utility {
         AtomicQueue<std::shared_ptr<Message>>& _buff;
     };
 
-    class SubProcessor:private LoggerBase{
+    class msgProcessor:private LoggerBase{
     public:
-        using Message = google::protobuf::Message;
-        SubProcessor()=default;
-        ~SubProcessor()=default;
+        using Message=google::protobuf::Message;
+        explicit msgProcessor(AtomicQueue<std::shared_ptr<Message>>&);
+        ~msgProcessor();
+        void rgshandles(const std::string&,std::function<void(std::shared_ptr<Message>)>);
     private:
-
+        bool prsthread();
     private:
-        zmq::context_t context{1};
-        //zmqPub _sub;
-        AtomicQueue<std::shared_ptr<Message>> _buff;
+        std::atomic_bool _shutdown{false};
+        std::future<bool> _prsfut;
+        std::unordered_map<std::string,std::function<void(std::shared_ptr<Message>)>> _handles;
+        AtomicQueue<std::shared_ptr<Message>>& _buff;
     };
-
 }
 
 
