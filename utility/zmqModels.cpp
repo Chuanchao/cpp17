@@ -71,7 +71,8 @@ bool zmqSub::subthread(zmq::context_t &io, const std::vector<std::string>& adds)
     for(const auto& add:adds){
         sub.connect(add.c_str());
     }
-    sub.setsockopt(ZMQ_SUBSCRIBE,"",0);
+    sub.set(zmq::sockopt::subscribe,"");
+    //sub.setsockopt(ZMQ_SUBSCRIBE,"",0);
     while(!_shutdown){
         try {
             zmq::message_t zmqmsg;
