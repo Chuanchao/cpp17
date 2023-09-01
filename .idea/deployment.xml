@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="otc (5cf27879-0527-49e0-ba94-da48080e06f7)" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
       <paths name="otc (5cf27879-0527-49e0-ba94-da48080e06f7)">
         <serverdata>
           <mappings>
             <mapping deploy="/home/otc/lyu/hftrading" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+      <paths name="otc (f7af936d-8340-4c1d-8069-82a6c52db7b6)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.YdWL8rqzyL" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
