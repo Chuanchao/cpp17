@@ -49,6 +49,43 @@ namespace utility {
         AtomicQueue<std::shared_ptr<Message>>& _buff;
     };
 
+
+    class zmqAsynRep:private LoggerBase{
+    public:
+        using Message = google::protobuf::Message;
+        zmqAsynRep(zmq::context_t &, int port,AtomicQueue<std::shared_ptr<Message>>&);
+        ~zmqAsynRep();
+        void shutdown();
+    private:
+        bool repthead(zmq::context_t &, int port);
+    private:
+        std::atomic_bool _shutdown{false};
+        std::future<bool> _repfut;
+        AtomicQueue<std::shared_ptr<Message>>& _buff;
+    };
+
+    class zmqSynReq:private LoggerBase{
+    public:
+        using Message = google::protobuf::Message;
+        zmqSynReq(zmq::context_t &,const std::string& add,AtomicQueue<std::shared_ptr<Message>>&);
+        ~zmqSynReq();
+        void shutdown();
+    private:
+        std::shared_ptr<zmq::socket_t> mkreq();
+        bool reqthead();
+    private:
+        zmq::context_t& _io;
+        std::string _add;
+        std::atomic_bool _shutdown{false};
+        std::future<bool> _reqfut;
+        AtomicQueue<std::shared_ptr<Message>>& _buff;
+
+
+    };
+
+
+
+
     class msgProcessor:private LoggerBase{
     public:
         using Message=google::protobuf::Message;
