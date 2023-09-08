@@ -6,6 +6,7 @@
 #define ORDERTEST_CTPDATA_H
 #include <string>
 #include <mutex>
+#include <chrono>
 #include <condition_variable>
 
 namespace gateway {

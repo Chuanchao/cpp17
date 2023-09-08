@@ -84,8 +84,6 @@ namespace utility {
     };
 
 
-
-
     class msgProcessor:private LoggerBase{
     public:
         using Message=google::protobuf::Message;

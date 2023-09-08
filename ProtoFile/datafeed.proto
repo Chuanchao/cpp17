@@ -1,0 +1,28 @@
+syntax = "proto3";
+package datafeed;
+
+message PriceQuantity
+{
+  double price =1;
+  int64 quantity =2;
+}
+
+message TickData
+{
+  string contract = 1;
+  //string symbol = 2;
+  string exchangeid = 3;
+  optional PriceQuantity bid = 4;
+  optional PriceQuantity ask = 5;
+  double lastTradePrice = 6;
+  int64 volume = 7;
+  double openInterest = 8;
+  double averagePrice = 9;
+  double preSettlement = 10;
+  string tradingdate = 11;
+  string exchangetime = 12;
+  double upperlimitprice = 13;
+  double lowlimitprice =  14;
+}
+
+

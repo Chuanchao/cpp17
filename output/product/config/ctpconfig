@@ -5,3 +5,9 @@ tduserid = 085945
 tdpassword = 12345679
 appid = simnow_client_test
 authcode = 0000000000000000
+
+mdip = 180.168.146.187
+mdport = 10211
+mdbrokerid = 9999
+mduserid = 085945
+mdpassword = 12345679

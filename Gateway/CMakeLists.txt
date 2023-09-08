@@ -1,1 +1,2 @@
 add_subdirectory(OrderGateway)
+add_subdirectory(FeedGateway)

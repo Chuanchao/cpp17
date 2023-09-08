@@ -194,6 +194,7 @@ bool zmqSynReq::reqthead() {
                         expect_reply = false;
                     } else {
                         _logger->info("W: no response from server, retrying…");
+                        this_thread::sleep_for(std::chrono::seconds(5));
                         //  Old socket will be confused; close it and open a new one
                         req = mkreq();
                         //  Send request again, on new socket
