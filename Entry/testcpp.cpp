@@ -5,7 +5,9 @@
 #include "Timer.h"
 #include "zmqModels.h"
 #include "CTPOrderGateway.h"
+#include "CTPFeedGateway.h"
 #include <iostream>
+
 
 using namespace std;
 
@@ -13,10 +15,14 @@ int main(){
     utility::Timer t;
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp20");
+    mlogger->info("run {} of {} at {} {}",__func__ ,__FILE__,__DATE__,__TIME__);
+    auto pfd = gateway::CTPFeedGateway::CreateCTPFeedApi();
+    pfd->init("config/ctpconfig");
     /*
     auto pgw = gateway::CTPOrderGateway::CreateCTPTradeApi();
     pgw->init("config/ctpconfig");
-    */
+
+
      zmq::context_t context{1};
     auto pub = utility::zmqPub(context,7000);
     while(true){
@@ -27,6 +33,7 @@ int main(){
         this_thread::sleep_for(3s);
         cout<<ss<<endl;
     }
+    */
 
     mlogger->info("Time elapsed: {}",t.elapsed());
     return 0;

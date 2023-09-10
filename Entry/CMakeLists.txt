@@ -3,11 +3,13 @@ add_executable(hftrading hftrading.cpp)
 target_include_directories(testcpp
         PRIVATE
         ${PROJECT_SOURCE_DIR}/Gateway/OrderGateway
+        ${PROJECT_SOURCE_DIR}/Gateway/FeedGateway
 )
 
 target_link_libraries(testcpp
         PRIVATE
         OrderGateway
+        FeedGateway
         )
 
 target_include_directories(hftrading

@@ -5,8 +5,7 @@
 #ifndef ORDERTEST_CTPFEEDGATEWAY_H
 #define ORDERTEST_CTPFEEDGATEWAY_H
 
-#include <string_view>
-
+#include "ctpData.h"
 #include "LogWrapper.h"
 #include "ThostFtdcMdApi.h"
 #include "FeedConsumer.h"
@@ -14,6 +13,7 @@
 namespace gateway {
     class CTPFeedGateway : public CThostFtdcMdSpi, private LoggerBase {
     public:
+        static std::shared_ptr<CTPFeedGateway> CreateCTPFeedApi();
         CTPFeedGateway();
         virtual ~CTPFeedGateway();
         void init(const std::string&);
@@ -44,7 +44,7 @@ namespace gateway {
         UserInfo _user;
 
         //api status
-        //ctpStatus _status;
+        ctpStatus _status;
         Monitor _front;
         Monitor _login;
         //Monitor _logout;

@@ -5,15 +5,16 @@
 #ifndef ORDERTEST_FEEDCONSUMER_H
 #define ORDERTEST_FEEDCONSUMER_H
 
-#include "ctpData.h"
+#include "datafeed.pb.h"
 
 namespace gateway{
 
     class FeedConsumer{
     public:
         virtual ~FeedConsumer()=0;
-        virtual void ProcessTickData()=0;
+        virtual void ProcessTickData(const datafeed::TickData&)=0;
     };
+
 }
 
 

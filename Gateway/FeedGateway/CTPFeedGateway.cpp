@@ -6,6 +6,10 @@
 #include "config.h"
 using namespace gateway;
 
+std::shared_ptr<CTPFeedGateway> CTPFeedGateway::CreateCTPFeedApi() {
+    static auto pFeed = make_shared<CTPFeedGateway>();
+    return pFeed;
+}
 
 CTPFeedGateway::CTPFeedGateway():_mdApi{nullptr},_consumer{nullptr} {}
 CTPFeedGateway::~CTPFeedGateway() {
@@ -68,15 +72,35 @@ void CTPFeedGateway::connect() {
 
 void CTPFeedGateway::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
     datafeed::TickData tick;
-    tick.set_contractid(pDepthMarketData->InstrumentID);
+    tick.set_contract(pDepthMarketData->InstrumentID);
     tick.set_exchangeid(pDepthMarketData->ExchangeID);
-    tick.mutable_bid()->set_price(pDepthMarketData->BidPrice1);
-    tick.mutable_bid()->set_quantity(pDepthMarketData->BidVolume1);
-    tick.mutable_ask()->set_price(pDepthMarketData->AskPrice1);
-    tick.mutable_ask()->set_quantity(pDepthMarketData->AskVolume1);
+    tick.mutable_bid1()->set_price(pDepthMarketData->BidPrice1);
+    tick.mutable_bid1()->set_quantity(pDepthMarketData->BidVolume1);
+    tick.mutable_bid2()->set_price(pDepthMarketData->BidPrice2);
+    tick.mutable_bid2()->set_quantity(pDepthMarketData->BidVolume2);
+    tick.mutable_bid3()->set_price(pDepthMarketData->BidPrice3);
+    tick.mutable_bid3()->set_quantity(pDepthMarketData->BidVolume3);
+    tick.mutable_bid4()->set_price(pDepthMarketData->BidPrice4);
+    tick.mutable_bid4()->set_quantity(pDepthMarketData->BidVolume4);
+    tick.mutable_bid5()->set_price(pDepthMarketData->BidPrice5);
+    tick.mutable_bid5()->set_quantity(pDepthMarketData->BidVolume5);
+    tick.mutable_ask1()->set_price(pDepthMarketData->AskPrice1);
+    tick.mutable_ask1()->set_quantity(pDepthMarketData->AskVolume1);
+    tick.mutable_ask2()->set_price(pDepthMarketData->AskPrice2);
+    tick.mutable_ask2()->set_quantity(pDepthMarketData->AskVolume2);
+    tick.mutable_ask3()->set_price(pDepthMarketData->AskPrice3);
+    tick.mutable_ask3()->set_quantity(pDepthMarketData->AskVolume3);
+    tick.mutable_ask4()->set_price(pDepthMarketData->AskPrice4);
+    tick.mutable_ask4()->set_quantity(pDepthMarketData->AskVolume4);
+    tick.mutable_ask5()->set_price(pDepthMarketData->AskPrice5);
+    tick.mutable_ask5()->set_quantity(pDepthMarketData->AskVolume5);
     tick.set_lasttradeprice(pDepthMarketData->LastPrice);
+    tick.set_open(pDepthMarketData->OpenPrice);
+    tick.set_highest(pDepthMarketData->HighestPrice);
+    tick.set_lowest(pDepthMarketData->LowestPrice);
     tick.set_openinterest(pDepthMarketData->OpenInterest);
     tick.set_volume(pDepthMarketData->Volume);
+    tick.set_turnover(pDepthMarketData->Turnover);
     tick.set_averageprice(pDepthMarketData->AveragePrice);
     tick.set_tradingdate(pDepthMarketData->TradingDay);
     tick.set_exchangetime(pDepthMarketData->UpdateTime);

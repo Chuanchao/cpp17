@@ -12,17 +12,29 @@ message TickData
   string contract = 1;
   //string symbol = 2;
   string exchangeid = 3;
-  optional PriceQuantity bid = 4;
-  optional PriceQuantity ask = 5;
-  double lastTradePrice = 6;
-  int64 volume = 7;
-  double openInterest = 8;
-  double averagePrice = 9;
-  double preSettlement = 10;
-  string tradingdate = 11;
-  string exchangetime = 12;
-  double upperlimitprice = 13;
-  double lowlimitprice =  14;
+  PriceQuantity bid1 = 4;
+  PriceQuantity bid2 = 5;
+  PriceQuantity bid3 = 6;
+  PriceQuantity bid4 = 7;
+  PriceQuantity bid5 = 8;
+  PriceQuantity ask1 = 9;
+  PriceQuantity ask2 = 10;
+  PriceQuantity ask3 = 11;
+  PriceQuantity ask4 = 12;
+  PriceQuantity ask5 = 13;
+  double lastTradePrice = 14;
+  double open = 15;
+  double highest = 16;
+  double lowest = 17;
+  int64 volume = 18;
+  double turnover = 19;
+  double openInterest = 20;
+  double averagePrice = 21;
+  double preSettlement = 22;
+  string tradingdate = 23;
+  string exchangetime = 24;
+  double upperlimitprice = 25;
+  double lowlimitprice =  26;
 }
 
 

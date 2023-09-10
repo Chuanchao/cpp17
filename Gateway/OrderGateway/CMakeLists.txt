@@ -1,5 +1,5 @@
 aux_source_directory(. ordergateway_SRCS)
-add_library(OrderGateway SHARED ${ordergateway_SRCS})
+add_library(OrderGateway SHARED ${ordergateway_SRCS} tradeSpi.cpp tradeSpi.h)
 
 target_include_directories(OrderGateway
         PUBLIC
