@@ -7,6 +7,7 @@
 #include <string>
 #include <mutex>
 #include <chrono>
+#include <vector>
 #include <condition_variable>
 
 namespace gateway {
@@ -32,6 +33,22 @@ namespace gateway {
         int64_t maxorderref{0};
         std::atomic<int> requestID{0};
         std::atomic<bool> isConnected{0};
+    };
+
+    template<typename T>
+    class synQuery{
+    public:
+       void clear(){
+           _data.clear();
+           _status = false;
+       }
+       void push(const T& d){_data.push_back(d);}
+       void setfull(){_status = true;}
+       auto isfull() const{return _status.load();}
+       std::vector<T> getData() const{return _data;}
+    private:
+        std::vector<T> _data;
+        std::atomic<bool> _status{false};
     };
 
 }

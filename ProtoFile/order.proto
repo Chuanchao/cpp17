@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ORDERS;
+package Orders;
 
 enum OrderType
 {

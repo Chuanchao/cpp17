@@ -6,6 +6,7 @@
 #include "zmqModels.h"
 #include "CTPOrderGateway.h"
 #include "CTPFeedGateway.h"
+#include "CTPQueryGateway.h"
 #include <iostream>
 
 
@@ -16,14 +17,20 @@ int main(){
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp20");
     mlogger->info("run {} of {} at {} {}",__func__ ,__FILE__,__DATE__,__TIME__);
-    auto pfd = gateway::CTPFeedGateway::CreateCTPFeedApi();
-    pfd->init("config/ctpconfig");
+    //auto pfd = gateway::CTPFeedGateway::CreateCTPFeedApi();
+    //pfd->init("config/ctpconfig");
+
+    //auto pgw = gateway::CTPOrderGateway::CreateCTPTradeApi();
+    //pgw->init("config/ctpconfig");
+    auto pqy = gateway::CTPQueryGateway::CreateCTPQueryApi();
+    pqy->init("config/ctpconfig");
+    auto insts = pqy->QueryInstruments();
+    for(const auto&item:insts){
+        mlogger->info("{}",item.DebugString());
+    }
     /*
-    auto pgw = gateway::CTPOrderGateway::CreateCTPTradeApi();
-    pgw->init("config/ctpconfig");
 
-
-     zmq::context_t context{1};
+    zmq::context_t context{1};
     auto pub = utility::zmqPub(context,7000);
     while(true){
         auto ss = utility::nowString();

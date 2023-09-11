@@ -12,7 +12,7 @@ target_link_directories(FeedGateway
         PUBLIC
         ${PROJECT_SOURCE_DIR}/Gateway/ctp_linux
         )
-target_link_libraries(OrderGateway
+target_link_libraries(FeedGateway
         PUBLIC
         utility
         thostmduserapi
