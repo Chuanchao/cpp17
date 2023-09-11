@@ -11,7 +11,7 @@ namespace gateway{
 
     class FeedConsumer{
     public:
-        virtual ~FeedConsumer()=0;
+        virtual ~FeedConsumer(){};
         virtual void ProcessTickData(const datafeed::TickData&)=0;
     };
 

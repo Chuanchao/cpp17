@@ -188,7 +188,6 @@ class FutureDefinition PROTOBUF_FINAL :
 
   enum : int {
     kInstrumentIDFieldNumber = 1,
-    kInstrumentNameFieldNumber = 2,
     kProductFieldNumber = 3,
     kExchangeIDFieldNumber = 4,
     kExpireDateFieldNumber = 7,
@@ -218,31 +217,6 @@ class FutureDefinition PROTOBUF_FINAL :
   const std::string& _internal_instrumentid() const;
   void _internal_set_instrumentid(const std::string& value);
   std::string* _internal_mutable_instrumentid();
-  public:
-
-  // string InstrumentName = 2;
-  void clear_instrumentname();
-  const std::string& instrumentname() const;
-  void set_instrumentname(const std::string& value);
-  void set_instrumentname(std::string&& value);
-  void set_instrumentname(const char* value);
-  void set_instrumentname(const char* value, size_t size);
-  std::string* mutable_instrumentname();
-  std::string* release_instrumentname();
-  void set_allocated_instrumentname(std::string* instrumentname);
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  std::string* unsafe_arena_release_instrumentname();
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  void unsafe_arena_set_allocated_instrumentname(
-      std::string* instrumentname);
-  private:
-  const std::string& _internal_instrumentname() const;
-  void _internal_set_instrumentname(const std::string& value);
-  std::string* _internal_mutable_instrumentname();
   public:
 
   // string Product = 3;
@@ -346,7 +320,6 @@ class FutureDefinition PROTOBUF_FINAL :
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instrumentid_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instrumentname_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr product_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr exchangeid_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr expiredate_;
@@ -1148,87 +1121,6 @@ inline void FutureDefinition::unsafe_arena_set_allocated_instrumentid(
   instrumentid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       instrumentid, GetArena());
   // @@protoc_insertion_point(field_unsafe_arena_set_allocated:datafeed.FutureDefinition.InstrumentID)
-}
-
-// string InstrumentName = 2;
-inline void FutureDefinition::clear_instrumentname() {
-  instrumentname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline const std::string& FutureDefinition::instrumentname() const {
-  // @@protoc_insertion_point(field_get:datafeed.FutureDefinition.InstrumentName)
-  return _internal_instrumentname();
-}
-inline void FutureDefinition::set_instrumentname(const std::string& value) {
-  _internal_set_instrumentname(value);
-  // @@protoc_insertion_point(field_set:datafeed.FutureDefinition.InstrumentName)
-}
-inline std::string* FutureDefinition::mutable_instrumentname() {
-  // @@protoc_insertion_point(field_mutable:datafeed.FutureDefinition.InstrumentName)
-  return _internal_mutable_instrumentname();
-}
-inline const std::string& FutureDefinition::_internal_instrumentname() const {
-  return instrumentname_.Get();
-}
-inline void FutureDefinition::_internal_set_instrumentname(const std::string& value) {
-  
-  instrumentname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
-}
-inline void FutureDefinition::set_instrumentname(std::string&& value) {
-  
-  instrumentname_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:datafeed.FutureDefinition.InstrumentName)
-}
-inline void FutureDefinition::set_instrumentname(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  instrumentname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
-              GetArena());
-  // @@protoc_insertion_point(field_set_char:datafeed.FutureDefinition.InstrumentName)
-}
-inline void FutureDefinition::set_instrumentname(const char* value,
-    size_t size) {
-  
-  instrumentname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:datafeed.FutureDefinition.InstrumentName)
-}
-inline std::string* FutureDefinition::_internal_mutable_instrumentname() {
-  
-  return instrumentname_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* FutureDefinition::release_instrumentname() {
-  // @@protoc_insertion_point(field_release:datafeed.FutureDefinition.InstrumentName)
-  return instrumentname_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline void FutureDefinition::set_allocated_instrumentname(std::string* instrumentname) {
-  if (instrumentname != nullptr) {
-    
-  } else {
-    
-  }
-  instrumentname_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), instrumentname,
-      GetArena());
-  // @@protoc_insertion_point(field_set_allocated:datafeed.FutureDefinition.InstrumentName)
-}
-inline std::string* FutureDefinition::unsafe_arena_release_instrumentname() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:datafeed.FutureDefinition.InstrumentName)
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  
-  return instrumentname_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      GetArena());
-}
-inline void FutureDefinition::unsafe_arena_set_allocated_instrumentname(
-    std::string* instrumentname) {
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  if (instrumentname != nullptr) {
-    
-  } else {
-    
-  }
-  instrumentname_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      instrumentname, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:datafeed.FutureDefinition.InstrumentName)
 }
 
 // string Product = 3;

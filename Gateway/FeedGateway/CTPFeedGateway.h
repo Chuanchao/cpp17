@@ -17,7 +17,7 @@ namespace gateway {
         CTPFeedGateway();
         virtual ~CTPFeedGateway();
         void init(const std::string&);
-        void RegisterConsumer(std::shared_ptr<FeedConsumer>);
+        void RegisterConsumer(FeedConsumer*);
         bool isActive() const { return _login.status; };
 
         void SubScribe(const std::vector<std::string> &);
@@ -39,7 +39,7 @@ namespace gateway {
     private:
         CThostFtdcMdApi* _mdApi;
         std::mutex _conmtx;
-        std::shared_ptr<FeedConsumer> _consumer;
+        FeedConsumer* _consumer;
         //User Info
         UserInfo _user;
 

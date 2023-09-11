@@ -25,7 +25,7 @@ void CTPFeedGateway::shutdown() {
     }
 }
 
-void CTPFeedGateway::RegisterConsumer(std::shared_ptr<FeedConsumer> cs) {
+void CTPFeedGateway::RegisterConsumer(FeedConsumer* cs) {
     std::lock_guard<std::mutex> lk{_conmtx};
     _consumer = cs;
 }
@@ -68,10 +68,15 @@ void CTPFeedGateway::connect() {
         _logger->error("CTPOrderGateway::Connect,User Login timeout!");
         return;
     }
+    this_thread::sleep_for(std::chrono::seconds(1));
 }
 
 void CTPFeedGateway::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData) {
     datafeed::TickData tick;
+    std::cout<<pDepthMarketData->InstrumentID<<endl;
+    std::cout<<pDepthMarketData->ExchangeID<<endl;
+    std::cout<<pDepthMarketData->TradingDay<<endl;
+    std::cout<<pDepthMarketData->ExchangeInstID<<endl;
     tick.set_contract(pDepthMarketData->InstrumentID);
     tick.set_exchangeid(pDepthMarketData->ExchangeID);
     tick.mutable_bid1()->set_price(pDepthMarketData->BidPrice1);
@@ -107,7 +112,6 @@ void CTPFeedGateway::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepth
     tick.set_upperlimitprice(pDepthMarketData->UpperLimitPrice);
     tick.set_lowlimitprice(pDepthMarketData->LowerLimitPrice);
     tick.set_presettlement(pDepthMarketData->PreSettlementPrice);
-    tick.set_tradingdate(GetTradingDay());
     if(_consumer) {
         _consumer->ProcessTickData(tick);
     } else{

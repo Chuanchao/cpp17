@@ -94,9 +94,9 @@ const char descriptor_table_protodef_position_2eproto[] PROTOBUF_SECTION_VARIABL
   "sDirection\022\023\n\013TotalVolume\030\004 \001(\003\022\023\n\013Today"
   "Volume\030\005 \001(\003\"h\n\rAccPosWrapper\022*\n\007longpos"
   "\030\001 \001(\0132\031.position.AccountPosition\022+\n\010sho"
-  "rtpos\030\002 \001(\0132\031.position.AccountPosition*+"
+  "rtpos\030\002 \001(\0132\031.position.AccountPosition*9"
   "\n\014PosDirection\022\014\n\010POS_LONG\020\000\022\r\n\tPOS_SHOR"
-  "T\020\001b\006proto3"
+  "T\020\001\022\014\n\010POS_BUTT\020\003b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_position_2eproto_deps[1] = {
 };
@@ -106,7 +106,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_pos
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_position_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_position_2eproto = {
-  false, false, descriptor_table_protodef_position_2eproto, "position.proto", 331,
+  false, false, descriptor_table_protodef_position_2eproto, "position.proto", 345,
   &descriptor_table_position_2eproto_once, descriptor_table_position_2eproto_sccs, descriptor_table_position_2eproto_deps, 2, 0,
   schemas, file_default_instances, TableStruct_position_2eproto::offsets,
   file_level_metadata_position_2eproto, 2, file_level_enum_descriptors_position_2eproto, file_level_service_descriptors_position_2eproto,
@@ -123,6 +123,7 @@ bool PosDirection_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
+    case 3:
       return true;
     default:
       return false;

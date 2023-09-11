@@ -33,6 +33,7 @@ add_subdirectory(ProtoFile)
 add_subdirectory(grammar)
 add_subdirectory(DataBase)
 add_subdirectory(asioboost)
+add_subdirectory(MarketFeed)
 message(${CMAKE_PROJECT_NAME})
 #message(${CMAKE_CXX_FLAGS})
 #library does not use imported target, normally defined

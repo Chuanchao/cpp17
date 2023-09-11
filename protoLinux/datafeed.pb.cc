@@ -83,7 +83,6 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_datafeed_2eproto::offsets[] PR
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::datafeed::FutureDefinition, instrumentid_),
-  PROTOBUF_FIELD_OFFSET(::datafeed::FutureDefinition, instrumentname_),
   PROTOBUF_FIELD_OFFSET(::datafeed::FutureDefinition, product_),
   PROTOBUF_FIELD_OFFSET(::datafeed::FutureDefinition, exchangeid_),
   PROTOBUF_FIELD_OFFSET(::datafeed::FutureDefinition, pricetick_),
@@ -129,8 +128,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_datafeed_2eproto::offsets[] PR
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::datafeed::FutureDefinition)},
-  { 12, -1, sizeof(::datafeed::PriceQuantity)},
-  { 19, -1, sizeof(::datafeed::TickData)},
+  { 11, -1, sizeof(::datafeed::PriceQuantity)},
+  { 18, -1, sizeof(::datafeed::TickData)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -140,30 +139,30 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_datafeed_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\016datafeed.proto\022\010datafeed\"\240\001\n\020FutureDef"
-  "inition\022\024\n\014InstrumentID\030\001 \001(\t\022\026\n\016Instrum"
-  "entName\030\002 \001(\t\022\017\n\007Product\030\003 \001(\t\022\022\n\nExchan"
-  "geID\030\004 \001(\t\022\021\n\tPriceTick\030\005 \001(\001\022\022\n\nMultipl"
-  "ier\030\006 \001(\001\022\022\n\nExpireDate\030\007 \001(\t\"0\n\rPriceQu"
-  "antity\022\r\n\005price\030\001 \001(\001\022\020\n\010quantity\030\002 \001(\003\""
-  "\275\005\n\010TickData\022\020\n\010contract\030\001 \001(\t\022\022\n\nexchan"
-  "geid\030\003 \001(\t\022%\n\004bid1\030\004 \001(\0132\027.datafeed.Pric"
-  "eQuantity\022%\n\004bid2\030\005 \001(\0132\027.datafeed.Price"
-  "Quantity\022%\n\004bid3\030\006 \001(\0132\027.datafeed.PriceQ"
-  "uantity\022%\n\004bid4\030\007 \001(\0132\027.datafeed.PriceQu"
-  "antity\022%\n\004bid5\030\010 \001(\0132\027.datafeed.PriceQua"
-  "ntity\022%\n\004ask1\030\t \001(\0132\027.datafeed.PriceQuan"
-  "tity\022%\n\004ask2\030\n \001(\0132\027.datafeed.PriceQuant"
-  "ity\022%\n\004ask3\030\013 \001(\0132\027.datafeed.PriceQuanti"
-  "ty\022%\n\004ask4\030\014 \001(\0132\027.datafeed.PriceQuantit"
-  "y\022%\n\004ask5\030\r \001(\0132\027.datafeed.PriceQuantity"
-  "\022\026\n\016lastTradePrice\030\016 \001(\001\022\014\n\004open\030\017 \001(\001\022\017"
-  "\n\007highest\030\020 \001(\001\022\016\n\006lowest\030\021 \001(\001\022\016\n\006volum"
-  "e\030\022 \001(\003\022\020\n\010turnover\030\023 \001(\001\022\024\n\014openInteres"
-  "t\030\024 \001(\001\022\024\n\014averagePrice\030\025 \001(\001\022\025\n\rpreSett"
-  "lement\030\026 \001(\001\022\023\n\013tradingdate\030\027 \001(\t\022\024\n\014exc"
-  "hangetime\030\030 \001(\t\022\027\n\017upperlimitprice\030\031 \001(\001"
-  "\022\025\n\rlowlimitprice\030\032 \001(\001b\006proto3"
+  "\n\016datafeed.proto\022\010datafeed\"\210\001\n\020FutureDef"
+  "inition\022\024\n\014InstrumentID\030\001 \001(\t\022\017\n\007Product"
+  "\030\003 \001(\t\022\022\n\nExchangeID\030\004 \001(\t\022\021\n\tPriceTick\030"
+  "\005 \001(\001\022\022\n\nMultiplier\030\006 \001(\001\022\022\n\nExpireDate\030"
+  "\007 \001(\t\"0\n\rPriceQuantity\022\r\n\005price\030\001 \001(\001\022\020\n"
+  "\010quantity\030\002 \001(\003\"\275\005\n\010TickData\022\020\n\010contract"
+  "\030\001 \001(\t\022\022\n\nexchangeid\030\003 \001(\t\022%\n\004bid1\030\004 \001(\013"
+  "2\027.datafeed.PriceQuantity\022%\n\004bid2\030\005 \001(\0132"
+  "\027.datafeed.PriceQuantity\022%\n\004bid3\030\006 \001(\0132\027"
+  ".datafeed.PriceQuantity\022%\n\004bid4\030\007 \001(\0132\027."
+  "datafeed.PriceQuantity\022%\n\004bid5\030\010 \001(\0132\027.d"
+  "atafeed.PriceQuantity\022%\n\004ask1\030\t \001(\0132\027.da"
+  "tafeed.PriceQuantity\022%\n\004ask2\030\n \001(\0132\027.dat"
+  "afeed.PriceQuantity\022%\n\004ask3\030\013 \001(\0132\027.data"
+  "feed.PriceQuantity\022%\n\004ask4\030\014 \001(\0132\027.dataf"
+  "eed.PriceQuantity\022%\n\004ask5\030\r \001(\0132\027.datafe"
+  "ed.PriceQuantity\022\026\n\016lastTradePrice\030\016 \001(\001"
+  "\022\014\n\004open\030\017 \001(\001\022\017\n\007highest\030\020 \001(\001\022\016\n\006lowes"
+  "t\030\021 \001(\001\022\016\n\006volume\030\022 \001(\003\022\020\n\010turnover\030\023 \001("
+  "\001\022\024\n\014openInterest\030\024 \001(\001\022\024\n\014averagePrice\030"
+  "\025 \001(\001\022\025\n\rpreSettlement\030\026 \001(\001\022\023\n\013tradingd"
+  "ate\030\027 \001(\t\022\024\n\014exchangetime\030\030 \001(\t\022\027\n\017upper"
+  "limitprice\030\031 \001(\001\022\025\n\rlowlimitprice\030\032 \001(\001b"
+  "\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_datafeed_2eproto_deps[1] = {
 };
@@ -174,7 +173,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_dat
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_datafeed_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_datafeed_2eproto = {
-  false, false, descriptor_table_protodef_datafeed_2eproto, "datafeed.proto", 951,
+  false, false, descriptor_table_protodef_datafeed_2eproto, "datafeed.proto", 927,
   &descriptor_table_datafeed_2eproto_once, descriptor_table_datafeed_2eproto_sccs, descriptor_table_datafeed_2eproto_deps, 3, 0,
   schemas, file_default_instances, TableStruct_datafeed_2eproto::offsets,
   file_level_metadata_datafeed_2eproto, 3, file_level_enum_descriptors_datafeed_2eproto, file_level_service_descriptors_datafeed_2eproto,
@@ -206,11 +205,6 @@ FutureDefinition::FutureDefinition(const FutureDefinition& from)
     instrumentid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_instrumentid(),
       GetArena());
   }
-  instrumentname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_instrumentname().empty()) {
-    instrumentname_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_instrumentname(),
-      GetArena());
-  }
   product_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   if (!from._internal_product().empty()) {
     product_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_product(),
@@ -235,7 +229,6 @@ FutureDefinition::FutureDefinition(const FutureDefinition& from)
 void FutureDefinition::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_FutureDefinition_datafeed_2eproto.base);
   instrumentid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  instrumentname_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   product_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   exchangeid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   expiredate_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -253,7 +246,6 @@ FutureDefinition::~FutureDefinition() {
 void FutureDefinition::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
   instrumentid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  instrumentname_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   product_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   exchangeid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   expiredate_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -281,7 +273,6 @@ void FutureDefinition::Clear() {
   (void) cached_has_bits;
 
   instrumentid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  instrumentname_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   product_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   exchangeid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   expiredate_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
@@ -305,15 +296,6 @@ const char* FutureDefinition::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPA
           auto str = _internal_mutable_instrumentid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
           CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "datafeed.FutureDefinition.InstrumentID"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // string InstrumentName = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_instrumentname();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "datafeed.FutureDefinition.InstrumentName"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -396,16 +378,6 @@ failure:
         1, this->_internal_instrumentid(), target);
   }
 
-  // string InstrumentName = 2;
-  if (this->instrumentname().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_instrumentname().data(), static_cast<int>(this->_internal_instrumentname().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "datafeed.FutureDefinition.InstrumentName");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_instrumentname(), target);
-  }
-
   // string Product = 3;
   if (this->product().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
@@ -469,13 +441,6 @@ size_t FutureDefinition::ByteSizeLong() const {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
         this->_internal_instrumentid());
-  }
-
-  // string InstrumentName = 2;
-  if (this->instrumentname().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_instrumentname());
   }
 
   // string Product = 3;
@@ -543,9 +508,6 @@ void FutureDefinition::MergeFrom(const FutureDefinition& from) {
   if (from.instrumentid().size() > 0) {
     _internal_set_instrumentid(from._internal_instrumentid());
   }
-  if (from.instrumentname().size() > 0) {
-    _internal_set_instrumentname(from._internal_instrumentname());
-  }
   if (from.product().size() > 0) {
     _internal_set_product(from._internal_product());
   }
@@ -585,7 +547,6 @@ void FutureDefinition::InternalSwap(FutureDefinition* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
   instrumentid_.Swap(&other->instrumentid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  instrumentname_.Swap(&other->instrumentname_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   product_.Swap(&other->product_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   exchangeid_.Swap(&other->exchangeid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   expiredate_.Swap(&other->expiredate_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());

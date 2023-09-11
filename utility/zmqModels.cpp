@@ -30,6 +30,10 @@ void zmqPub::PutInfo(const std::string & msg) {
     _buff.push(pubmsg);
 }
 
+void zmqPub::PutInfo(std::shared_ptr<Message> msg) {
+    _buff.push(msg);
+}
+
 bool zmqPub::pubthread(zmq::context_t& io,int port) {
     _logger->info("Launching zmqPub thread!");
     zmq::socket_t pubServer{io,zmq::socket_type::pub};

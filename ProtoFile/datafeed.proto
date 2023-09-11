@@ -5,7 +5,7 @@ package datafeed;
 message FutureDefinition
 {
   string InstrumentID=1;
-  string InstrumentName=2;
+  //string InstrumentName=2;
   string Product=3;
   string ExchangeID=4;
   double PriceTick=5;

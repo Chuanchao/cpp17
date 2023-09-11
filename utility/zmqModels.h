@@ -26,6 +26,7 @@ namespace utility {
         ~zmqPub();
         void shutdown();
         void PutInfo(const std::string&);
+        void PutInfo(std::shared_ptr<Message>);
     private:
         bool pubthread(zmq::context_t &, int port);
     private:

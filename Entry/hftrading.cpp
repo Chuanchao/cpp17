@@ -8,6 +8,7 @@
 #include "config.h"
 #include "zmqModels.h"
 #include "transfer_message.pb.h"
+#include "datafeed.pb.h"
 
 using namespace std::literals;
 
@@ -34,16 +35,17 @@ int main(int argc, char* argv[]){
     utility::AtomicQueue<shared_ptr<Message>> buffer;
     auto sub = utility::zmqSub(buffer);
     vector<string> adds;
-    adds.push_back("tcp://localhost:7000");
+    adds.push_back("tcp://localhost:1111");
     sub.init(context,adds);
 
 
     auto proc = utility::msgProcessor(buffer);
     auto handle = [mlogger](shared_ptr<Message> msg){
-        auto pmsg = dynamic_pointer_cast<transfer::infoString>(msg);
-        mlogger->info("{}",pmsg->msg());
+        auto pmsg = dynamic_pointer_cast<datafeed::TickData>(msg);
+        mlogger->info("{}",pmsg->DebugString());
     };
-    proc.rgshandles(transfer::infoString::descriptor()->full_name(),handle);
+    proc.rgshandles(datafeed::TickData::descriptor()
+    ->full_name(),handle);
 
 
     this_thread::sleep_for(30s);

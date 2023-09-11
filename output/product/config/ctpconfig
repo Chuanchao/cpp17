@@ -11,3 +11,6 @@ mdport = 10211
 mdbrokerid = 9999
 mduserid = 085945
 mdpassword = 12345679
+
+tickport = 1111
+candleport = 2222

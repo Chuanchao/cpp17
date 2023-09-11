@@ -20,6 +20,7 @@ namespace gateway{
         _tradeApi->SubscribePublicTopic(THOST_TERT_QUICK);
         GetUserInfo(file);
         Connect();
+        //QueryInstruments();
     }
 
     std::vector<datafeed::FutureDefinition> CTPQueryGateway::QueryInstruments() {
@@ -45,7 +46,7 @@ namespace gateway{
         {
             datafeed::FutureDefinition fut;
             fut.set_instrumentid(pInstrument->InstrumentID);
-            fut.set_instrumentname(pInstrument->InstrumentName);
+            //fut.set_instrumentname(pInstrument->InstrumentName);
             fut.set_product(pInstrument->ProductID);
             int DeliveryYear = pInstrument->DeliveryYear;
             int DeliveryMonth = pInstrument->DeliveryMonth;
