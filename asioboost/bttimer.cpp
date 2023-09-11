@@ -75,7 +75,7 @@ namespace HFTrading{
             //synchronously operation, block the caller thread.
             m_socket.connect(op_ep.value(), ec);
             if (ec.value() != 0) {
-                _logger->error("Failed to Open Client socket! {}", ec.what());
+                _logger->error("Failed to Open Client socket! {}", ec.message());
                 return false;
             }
         }

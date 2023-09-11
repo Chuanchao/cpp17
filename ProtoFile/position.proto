@@ -1,0 +1,26 @@
+syntax = "proto3";
+package position;
+
+
+enum PosDirection
+{
+  POS_LONG = 0;
+  POS_SHORT = 1;
+  POS_BUTT = 3;
+}
+
+
+message AccountPosition
+{
+  string InstrumentID=1;
+  string ProductID = 2;
+  PosDirection Direction = 3;
+  int64 TotalVolume = 4;
+  int64 TodayVolume = 5;
+}
+
+message AccPosWrapper
+{
+  AccountPosition longpos=1;
+  AccountPosition shortpos=2;
+}

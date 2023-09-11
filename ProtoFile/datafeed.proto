@@ -1,0 +1,52 @@
+syntax = "proto3";
+package datafeed;
+
+
+message FutureDefinition
+{
+  string InstrumentID=1;
+  string InstrumentName=2;
+  string Product=3;
+  string ExchangeID=4;
+  double PriceTick=5;
+  double Multiplier=6;
+  string ExpireDate=7;
+}
+
+message PriceQuantity
+{
+  double price =1;
+  int64 quantity =2;
+}
+
+message TickData
+{
+  string contract = 1;
+  //string symbol = 2;
+  string exchangeid = 3;
+  PriceQuantity bid1 = 4;
+  PriceQuantity bid2 = 5;
+  PriceQuantity bid3 = 6;
+  PriceQuantity bid4 = 7;
+  PriceQuantity bid5 = 8;
+  PriceQuantity ask1 = 9;
+  PriceQuantity ask2 = 10;
+  PriceQuantity ask3 = 11;
+  PriceQuantity ask4 = 12;
+  PriceQuantity ask5 = 13;
+  double lastTradePrice = 14;
+  double open = 15;
+  double highest = 16;
+  double lowest = 17;
+  int64 volume = 18;
+  double turnover = 19;
+  double openInterest = 20;
+  double averagePrice = 21;
+  double preSettlement = 22;
+  string tradingdate = 23;
+  string exchangetime = 24;
+  double upperlimitprice = 25;
+  double lowlimitprice =  26;
+}
+
+

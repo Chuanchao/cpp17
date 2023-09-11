@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package ORDERS;
+package Orders;
 
 enum OrderType
 {
@@ -32,48 +32,48 @@ enum OrderStatus
 
 message SubmitOrder
 {
-  optional string stgyID = 1;
-  optional string prodID = 2;
-  optional string instID = 3;
-  optional int32 amount = 4;
-  optional double price = 5;
-  optional OrderType order_t = 6;
-  optional OrderDirection stgy_d = 7;
-  optional OrderDirection real_d = 8;
-  optional string exchId = 9;
-  optional int64 orderRef = 10;
+  string stgyID = 1;
+  string prodID = 2;
+  string instID = 3;
+  int32 amount = 4;
+  double price = 5;
+  OrderType order_t = 6;
+  OrderDirection stgy_d = 7;
+  OrderDirection real_d = 8;
+  string exchId = 9;
+  int64 orderRef = 10;
 
 }
 
 message CancelOrder
 {
-  optional string  stgyID= 1;
-  optional string instID = 2;
-  optional int64 orderRef = 3;
+  string  stgyID= 1;
+  string instID = 2;
+  int64 orderRef = 3;
 
 }
 
 message RtnTrade
 {
-  optional string stgyID = 1;
-  optional string prodID = 2;
-  optional string instID = 3;
-  optional int32 tradedAmount = 4;
-  optional double avgPrice = 5;
-  optional OrderType order_t = 6;
-  optional OrderDirection real_d = 7;
-  optional string exchId = 9;
-  optional int64 orderRef = 10;
+  string stgyID = 1;
+  string prodID = 2;
+  string instID = 3;
+  int32 tradedAmount = 4;
+  double avgPrice = 5;
+  OrderType order_t = 6;
+  OrderDirection real_d = 7;
+  string exchId = 9;
+  int64 orderRef = 10;
 }
 
 message RtnOrder
 {
-  optional string stgyID = 1;
-  optional string prodID = 2;
-  optional string instID = 3;
-  optional OrderStatus status = 5;
-  optional OrderDirection stgy_d = 6;
-  optional OrderDirection real_d = 7;
-  optional string exchId = 8;
-  optional int64 orderRef = 9;
+  string stgyID = 1;
+  string prodID = 2;
+  string instID = 3;
+  OrderStatus status = 5;
+  OrderDirection stgy_d = 6;
+  OrderDirection real_d = 7;
+  string exchId = 8;
+  int64 orderRef = 9;
 }

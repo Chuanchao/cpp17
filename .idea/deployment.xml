@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+  <component name="PublishConfigData" serverName="Remote Development" remoteFilesAllowedToDisappearOnAutoupload="false">
     <serverData>
-      <paths name="139.196.255.209 (37569db5-56c8-46ca-87ba-ca85d2cbef4d)">
+      <paths name="otc (f7af936d-8340-4c1d-8069-82a6c52db7b6)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.AYEI7ohvNC" local="$PROJECT_DIR$" />
+            <mapping deploy="/home/otc/cpp20" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />

@@ -6,47 +6,73 @@
 #include <thread>
 #include <iostream>
 #include <chrono>
+#include <unistd.h>
+#include <ctime>
 using namespace std;
+namespace utility {
 
-double doAsyncChrono() noexcept{
-    using namespace std::literals;
-    auto start = std::chrono::high_resolution_clock::now();
-    auto id = std::this_thread::get_id();
-    std::this_thread::sleep_for(2000ms);
-    auto end = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> elapsed = end-start;
-    std::cout <<"on thread "<<id<< " Waited " << elapsed.count() << " ms\n";
-    return elapsed.count();
-}
-
-
-std::string BoostDuration(){
-    using T = boost::chrono::time_point<boost::chrono::steady_clock,
-            boost::chrono::duration<double, boost::ratio<3600> > >;
-    T tp = boost::chrono::steady_clock::now();
-    std::ostringstream so;
-    so<<tp;
-    return so.str();
-}
-
-std::string make_daytime_string(){
-    time_t now = time(0);
-    return ctime(&now);
-}
-
-std::vector<std::string> Split(const std::string& str, char delim){
-    std::vector<std::string> items;
-    std::stringstream ss(str);
-    std::string item;
-    while(getline(ss, item, delim))
-    {
-        items.push_back(item);
+    double doAsyncChrono() noexcept {
+        using namespace std::literals;
+        auto start = std::chrono::high_resolution_clock::now();
+        auto id = std::this_thread::get_id();
+        std::this_thread::sleep_for(2000ms);
+        auto end = std::chrono::high_resolution_clock::now();
+        std::chrono::duration<double, std::milli> elapsed = end - start;
+        std::cout << "on thread " << id << " Waited " << elapsed.count() << " ms\n";
+        return elapsed.count();
     }
-    return items;
-}
 
-int getNextID(){
-    static int id = 0;
-    return ++id;
-}
 
+    std::string BoostDuration() {
+        using T = boost::chrono::time_point<boost::chrono::steady_clock,
+                boost::chrono::duration<double, boost::ratio<3600> > >;
+        T tp = boost::chrono::steady_clock::now();
+        std::ostringstream so;
+        so << tp;
+        return so.str();
+    }
+
+
+    optional <string> getsysname() {
+        struct utsname system_info;
+        if (uname(&system_info) == 0) return system_info.sysname;
+        return nullopt;
+    }
+
+    std::string nowString(){
+        auto tp = std::chrono::system_clock::now();
+        std::time_t tt = std::chrono::system_clock::to_time_t(tp);
+        std::tm tms = *std::localtime(&tt);
+        char buffer[80];
+        std::strftime(buffer,sizeof(buffer),"%Y-%m-%d %H:%M:%S",&tms);
+        return buffer;
+    }
+
+    std::string GetCurrentWorkingDir(){
+        char buff[FILENAME_MAX];
+        getcwd( buff, FILENAME_MAX );
+        std::string current_working_dir(buff);
+        return current_working_dir;
+    }
+
+    std::string make_daytime_string() {
+        time_t now = time(0);
+        return ctime(&now);
+    }
+
+    std::vector<std::string> Split(const std::string &str, char delim) {
+        std::vector<std::string> items;
+        std::stringstream ss(str);
+        std::string item;
+        while (getline(ss, item, delim)) {
+            items.push_back(item);
+        }
+        return items;
+    }
+
+    int getNextID() {
+        static int id = 0;
+        return ++id;
+    }
+
+}
