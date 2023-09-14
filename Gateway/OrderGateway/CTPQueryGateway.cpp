@@ -20,10 +20,10 @@ namespace gateway{
         _tradeApi->SubscribePublicTopic(THOST_TERT_QUICK);
         GetUserInfo(file);
         Connect();
-        //QueryInstruments();
+        QueryInstruments();
     }
 
-    std::vector<datafeed::FutureDefinition> CTPQueryGateway::QueryInstruments() {
+    std::unordered_map<std::string,datafeed::FutureDefinition> CTPQueryGateway::QueryInstruments() {
         _logger->info("QueryInstruments ");
         if(!_futs.isfull())
         {
@@ -57,7 +57,7 @@ namespace gateway{
             switch(pInstrument->ProductClass)
             {
                 case THOST_FTDC_PC_Futures :
-                    _futs.push(fut);
+                    _futs.push(pInstrument->InstrumentID,fut);
                     break;
                 default:
                     break;
@@ -67,7 +67,7 @@ namespace gateway{
             _futs.setfull();
     }
 
-    std::vector<position::AccountPosition> CTPQueryGateway::QueryPosition() {
+    std::unordered_map<std::string,position::AccountPosition> CTPQueryGateway::QueryPosition() {
         _accpos.clear();
         CThostFtdcQryInvestorPositionField field;
         memset(&field, 0, sizeof(field));
@@ -90,13 +90,12 @@ namespace gateway{
             position::AccountPosition pos;
             _logger->info("OnRspQryInvestorPosition {} PosiDirection: {},Position{}, TodayPosition {}, isLast: {}", pInvestorPosition->InstrumentID,
                           pInvestorPosition->PosiDirection, pInvestorPosition->Position, pInvestorPosition->TodayPosition, bIsLast);
-            //auto product = _conManger->GetContractSymbol(pInvestorPosition->InstrumentID);
-            std::string product;
-            if(product.size()>0){
+            auto product = getProductID(pInvestorPosition->InstrumentID);
+            if(product.has_value()){
                 pos.set_instrumentid(pInvestorPosition->InstrumentID);
                 pos.set_totalvolume(pInvestorPosition->Position);
                 pos.set_todayvolume(pInvestorPosition->TodayPosition);
-                //pos.set_productid(product);
+                pos.set_productid(product.value());
                 if(pInvestorPosition->PosiDirection == THOST_FTDC_PD_Long){
                     pos.set_direction(position::POS_LONG);
                 }else if(pInvestorPosition->PosiDirection == THOST_FTDC_PD_Short){
@@ -106,7 +105,8 @@ namespace gateway{
                     _logger->info("WHAT HAPPENED: OnRspQryInvestorPosition PosiDirection {}", pInvestorPosition->PosiDirection);
                     pos.set_direction(position::POS_BUTT);
                 }
-                _accpos.push(pos);
+                //_logger->info("{}", pos.direction());
+                _accpos.push(pInvestorPosition->InstrumentID,pos);
             }
         }
         if(bIsLast)
@@ -125,8 +125,12 @@ namespace gateway{
 
     }
 
-
-
+    std::optional<std::string> CTPQueryGateway::getProductID(const std::string &contract) {
+        if(auto search = _futs.getData().find(contract);search!=_futs.getData().end()){
+            return search->second.product();
+        }
+        return std::nullopt;
+    }
 
     void CTPQueryGateway::OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {
         if(pRspInfo->ErrorID != 0)
@@ -142,5 +146,3 @@ namespace gateway{
         }
     }
 }
-
-#include "CTPQueryGateway.h"

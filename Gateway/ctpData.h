@@ -7,7 +7,7 @@
 #include <string>
 #include <mutex>
 #include <chrono>
-#include <vector>
+#include <unordered_map>
 #include <condition_variable>
 
 namespace gateway {
@@ -42,12 +42,12 @@ namespace gateway {
            _data.clear();
            _status = false;
        }
-       void push(const T& d){_data.push_back(d);}
+       void push(const std::string& ind ,const T& d){_data.emplace(ind,d);}
        void setfull(){_status = true;}
        auto isfull() const{return _status.load();}
-       std::vector<T> getData() const{return _data;}
+       const auto& getData() const{return _data;}
     private:
-        std::vector<T> _data;
+        std::unordered_map<std::string,T> _data;
         std::atomic<bool> _status{false};
     };
 

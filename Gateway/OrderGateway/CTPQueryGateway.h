@@ -8,6 +8,8 @@
 #include "tradeSpi.h"
 #include "datafeed.pb.h"
 #include "position.pb.h"
+#include <optional>
+
 
 namespace gateway{
     class CTPQueryGateway:public CTPTradeSpi{
@@ -16,9 +18,10 @@ namespace gateway{
         CTPQueryGateway();
         ~CTPQueryGateway() override;
         void init(const std::string&);
-        std::vector<datafeed::FutureDefinition> QueryInstruments();
-        std::vector<position::AccountPosition> QueryPosition();
+        std::unordered_map<std::string,datafeed::FutureDefinition> QueryInstruments();
+        std::unordered_map<std::string,position::AccountPosition> QueryPosition();
         void QueryOrder();
+        std::optional<std::string> getProductID(const std::string&);
     private:
         void OnRspQryOrder(CThostFtdcOrderField *pOrder, CThostFtdcRspInfoField *pRspInfo,
                            int nRequestID, bool bIsLast) override ;

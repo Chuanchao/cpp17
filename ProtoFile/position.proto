@@ -4,9 +4,10 @@ package position;
 
 enum PosDirection
 {
-  POS_LONG = 0;
-  POS_SHORT = 1;
-  POS_BUTT = 3;
+  POS_BUTT = 0;
+  POS_LONG = 1;
+  POS_SHORT = 2;
+
 }
 
 
