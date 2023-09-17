@@ -70,15 +70,15 @@ PROTOBUF_NAMESPACE_CLOSE
 namespace position {
 
 enum PosDirection : int {
-  POS_LONG = 0,
-  POS_SHORT = 1,
-  POS_BUTT = 3,
+  POS_BUTT = 0,
+  POS_LONG = 1,
+  POS_SHORT = 2,
   PosDirection_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   PosDirection_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool PosDirection_IsValid(int value);
-constexpr PosDirection PosDirection_MIN = POS_LONG;
-constexpr PosDirection PosDirection_MAX = POS_BUTT;
+constexpr PosDirection PosDirection_MIN = POS_BUTT;
+constexpr PosDirection PosDirection_MAX = POS_SHORT;
 constexpr int PosDirection_ARRAYSIZE = PosDirection_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* PosDirection_descriptor();

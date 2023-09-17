@@ -51,6 +51,8 @@ namespace gateway{
         }
     }
 
-
+    std::string MarketFeed::GetTradingDay() {
+        return _feedgw->GetTradingDay();
+    }
 
 }

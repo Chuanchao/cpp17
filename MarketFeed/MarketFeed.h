@@ -17,6 +17,7 @@ namespace gateway{
         void init(const std::string&);
         void Subscribe(const std::vector<std::string>&);
         void Unsubscribe(const std::vector<std::string>&);
+        std::string GetTradingDay();
     private:
         //void genCandles();
         bool isvalidtick(const datafeed::TickData&);

@@ -16,16 +16,16 @@ int main(){
     LoggerInit::init("test", spdlog::level::debug);
     auto mlogger = spdlog::get("cpp20");
     mlogger->info("run {} of {} at {} {}",__func__ ,__FILE__,__DATE__,__TIME__);
-    /*
+
     auto pmf = make_shared<gateway::MarketFeed>();
     pmf->init("config/ctpconfig");
 
-    std::vector<string> insts{"CF401"};
+    std::vector<string> insts{"au2312"};
     pmf->Subscribe(insts);
-
+    mlogger->info("tradingdate is {}",pmf->GetTradingDay());
     using namespace std::literals;
-    this_thread::sleep_for(30s);
-
+    this_thread::sleep_for(10s);
+    /*
     auto pfd = gateway::CTPFeedGateway::CreateCTPFeedApi();
     pfd->init("config/ctpconfig");
 
@@ -34,11 +34,12 @@ int main(){
     */
     auto pqy = gateway::CTPQueryGateway::CreateCTPQueryApi();
     pqy->init("config/ctpconfig");
-    //auto insts = pqy->QueryInstruments();
+    auto futs = pqy->QueryInstruments();
     auto poses = pqy->QueryPosition();
-    for(const auto&item:poses){
-        mlogger->info("today amount is {}",item.second.DebugString());
+    for(const auto&item:futs){
+        mlogger->info("{}",item.second.DebugString());
     }
+
     /*
     zmq::context_t context{1};
     auto pub = utility::zmqPub(context,7000);

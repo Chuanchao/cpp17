@@ -15,5 +15,5 @@ target_link_directories(FeedGateway
 target_link_libraries(FeedGateway
         PUBLIC
         utility
-        thostmduserapi
+        thostmduserapi_se
         )

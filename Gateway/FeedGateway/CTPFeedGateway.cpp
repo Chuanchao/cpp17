@@ -68,6 +68,7 @@ void CTPFeedGateway::connect() {
         _logger->error("CTPOrderGateway::Connect,User Login timeout!");
         return;
     }
+
     this_thread::sleep_for(std::chrono::seconds(1));
 }
 
@@ -76,7 +77,6 @@ void CTPFeedGateway::OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepth
     std::cout<<pDepthMarketData->InstrumentID<<endl;
     std::cout<<pDepthMarketData->ExchangeID<<endl;
     std::cout<<pDepthMarketData->TradingDay<<endl;
-    std::cout<<pDepthMarketData->ExchangeInstID<<endl;
     tick.set_contract(pDepthMarketData->InstrumentID);
     tick.set_exchangeid(pDepthMarketData->ExchangeID);
     tick.mutable_bid1()->set_price(pDepthMarketData->BidPrice1);
@@ -161,6 +161,7 @@ void CTPFeedGateway::OnRspUserLogin(CThostFtdcRspUserLoginField *pRspUserLogin, 
         _login.status = false;
     }else
     {
+        _logger->info("OnRspUserLogin successed.");
         _login.status = true;
         _logger->info("TradingDay = {}",GetTradingDay());
         _login.cv.notify_one();
@@ -215,7 +216,7 @@ void CTPFeedGateway::OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpec
     {
         _logger->info("OnRspSubMarketData errorID: {}  {}", pRspInfo->ErrorID, pRspInfo->ErrorMsg);
     } else{
-        //if(pSpecificInstrument) _logger->info("OnRspSubMarketData {}  islast:{}", pSpecificInstrument->InstrumentID , bIsLast);
+        if(pSpecificInstrument) _logger->info("OnRspSubMarketData {}  islast:{}", pSpecificInstrument->InstrumentID , bIsLast);
     }
 }
 

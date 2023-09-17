@@ -95,8 +95,8 @@ const char descriptor_table_protodef_position_2eproto[] PROTOBUF_SECTION_VARIABL
   "Volume\030\005 \001(\003\"h\n\rAccPosWrapper\022*\n\007longpos"
   "\030\001 \001(\0132\031.position.AccountPosition\022+\n\010sho"
   "rtpos\030\002 \001(\0132\031.position.AccountPosition*9"
-  "\n\014PosDirection\022\014\n\010POS_LONG\020\000\022\r\n\tPOS_SHOR"
-  "T\020\001\022\014\n\010POS_BUTT\020\003b\006proto3"
+  "\n\014PosDirection\022\014\n\010POS_BUTT\020\000\022\014\n\010POS_LONG"
+  "\020\001\022\r\n\tPOS_SHORT\020\002b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_position_2eproto_deps[1] = {
 };
@@ -123,7 +123,7 @@ bool PosDirection_IsValid(int value) {
   switch (value) {
     case 0:
     case 1:
-    case 3:
+    case 2:
       return true;
     default:
       return false;
