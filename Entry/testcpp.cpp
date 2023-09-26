@@ -31,7 +31,7 @@ int main(){
 
     auto pgw = gateway::CTPOrderGateway::CreateCTPTradeApi();
     pgw->init("config/ctpconfig");
-    */
+
     auto pqy = gateway::CTPQueryGateway::CreateCTPQueryApi();
     pqy->init("config/ctpconfig");
     auto futs = pqy->QueryInstruments();

@@ -10,30 +10,32 @@ enum OrderType
 
 enum OrderDirection
 {
-  OPEN_LONG = 0;
-  OPEN_SHORT = 1;
-  CLOSE_LONG = 2;
-  CLOSE_SHORT = 3;
-  CLOSE_TODAY_LONG = 4;
-  CLOSE_TODAY_SHORT = 5;
-  UNKNOWN_TRADE = 6;
-  ORDER_TASK_BUTT = 7;
+  ORDER_TASK_BUTT = 0;
+  OPEN_LONG = 1;
+  OPEN_SHORT = 2;
+  CLOSE_LONG = 3;
+  CLOSE_SHORT = 4;
+  CLOSE_TODAY_LONG = 5;
+  CLOSE_TODAY_SHORT = 6;
+  UNKNOWN_TRADE = 7;
+
 }
 
 enum OrderStatus
 {
-  WORK_ORDER = 0;
-  DONE_ORDER = 1;
-  RISKCONTROL_REJECTED = 2;
-  EXCHANGE_REJECTED = 3;
-  NETWORK_ERROR = 4;
+  NETWORK_ERROR = 0;
+  WORK_ORDER = 1;
+  DONE_ORDER = 2;
+  CANCEL_ORDER = 3;
+  RISKCONTROL_REJECTED = 4;
+  EXCHANGE_REJECTED = 5;
 }
 
 
 message SubmitOrder
 {
-  string stgyID = 1;
-  string prodID = 2;
+  string styID = 1;
+  string symbol = 2;
   string instID = 3;
   int32 amount = 4;
   double price = 5;
@@ -47,9 +49,8 @@ message SubmitOrder
 
 message CancelOrder
 {
-  string  stgyID= 1;
-  string instID = 2;
-  int64 orderRef = 3;
+  string styID = 1;
+  int64 orderRef = 2;
 
 }
 

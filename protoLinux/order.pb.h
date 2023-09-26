@@ -103,20 +103,20 @@ inline bool OrderType_Parse(
     OrderType_descriptor(), name, value);
 }
 enum OrderDirection : int {
-  OPEN_LONG = 0,
-  OPEN_SHORT = 1,
-  CLOSE_LONG = 2,
-  CLOSE_SHORT = 3,
-  CLOSE_TODAY_LONG = 4,
-  CLOSE_TODAY_SHORT = 5,
-  UNKNOWN_TRADE = 6,
-  ORDER_TASK_BUTT = 7,
+  ORDER_TASK_BUTT = 0,
+  OPEN_LONG = 1,
+  OPEN_SHORT = 2,
+  CLOSE_LONG = 3,
+  CLOSE_SHORT = 4,
+  CLOSE_TODAY_LONG = 5,
+  CLOSE_TODAY_SHORT = 6,
+  UNKNOWN_TRADE = 7,
   OrderDirection_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   OrderDirection_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool OrderDirection_IsValid(int value);
-constexpr OrderDirection OrderDirection_MIN = OPEN_LONG;
-constexpr OrderDirection OrderDirection_MAX = ORDER_TASK_BUTT;
+constexpr OrderDirection OrderDirection_MIN = ORDER_TASK_BUTT;
+constexpr OrderDirection OrderDirection_MAX = UNKNOWN_TRADE;
 constexpr int OrderDirection_ARRAYSIZE = OrderDirection_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* OrderDirection_descriptor();
@@ -134,17 +134,17 @@ inline bool OrderDirection_Parse(
     OrderDirection_descriptor(), name, value);
 }
 enum OrderStatus : int {
-  WORK_ORDER = 0,
-  DONE_ORDER = 1,
-  RISKCONTROL_REJECTED = 2,
-  EXCHANGE_REJECTED = 3,
-  NETWORK_ERROR = 4,
+  NETWORK_ERROR = 0,
+  WORK_ORDER = 1,
+  DONE_ORDER = 2,
+  RISKCONTROL_REJECTED = 3,
+  EXCHANGE_REJECTED = 4,
   OrderStatus_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::min(),
   OrderStatus_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<::PROTOBUF_NAMESPACE_ID::int32>::max()
 };
 bool OrderStatus_IsValid(int value);
-constexpr OrderStatus OrderStatus_MIN = WORK_ORDER;
-constexpr OrderStatus OrderStatus_MAX = NETWORK_ERROR;
+constexpr OrderStatus OrderStatus_MIN = NETWORK_ERROR;
+constexpr OrderStatus OrderStatus_MAX = EXCHANGE_REJECTED;
 constexpr int OrderStatus_ARRAYSIZE = OrderStatus_MAX + 1;
 
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* OrderStatus_descriptor();
@@ -276,8 +276,8 @@ class SubmitOrder PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStgyIDFieldNumber = 1,
-    kProdIDFieldNumber = 2,
+    kStyIDFieldNumber = 1,
+    kSymbolFieldNumber = 2,
     kInstIDFieldNumber = 3,
     kExchIdFieldNumber = 9,
     kPriceFieldNumber = 5,
@@ -287,54 +287,54 @@ class SubmitOrder PROTOBUF_FINAL :
     kRealDFieldNumber = 8,
     kOrderRefFieldNumber = 10,
   };
-  // string stgyID = 1;
-  void clear_stgyid();
-  const std::string& stgyid() const;
-  void set_stgyid(const std::string& value);
-  void set_stgyid(std::string&& value);
-  void set_stgyid(const char* value);
-  void set_stgyid(const char* value, size_t size);
-  std::string* mutable_stgyid();
-  std::string* release_stgyid();
-  void set_allocated_stgyid(std::string* stgyid);
+  // string styID = 1;
+  void clear_styid();
+  const std::string& styid() const;
+  void set_styid(const std::string& value);
+  void set_styid(std::string&& value);
+  void set_styid(const char* value);
+  void set_styid(const char* value, size_t size);
+  std::string* mutable_styid();
+  std::string* release_styid();
+  void set_allocated_styid(std::string* styid);
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  std::string* unsafe_arena_release_stgyid();
+  std::string* unsafe_arena_release_styid();
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  void unsafe_arena_set_allocated_stgyid(
-      std::string* stgyid);
+  void unsafe_arena_set_allocated_styid(
+      std::string* styid);
   private:
-  const std::string& _internal_stgyid() const;
-  void _internal_set_stgyid(const std::string& value);
-  std::string* _internal_mutable_stgyid();
+  const std::string& _internal_styid() const;
+  void _internal_set_styid(const std::string& value);
+  std::string* _internal_mutable_styid();
   public:
 
-  // string prodID = 2;
-  void clear_prodid();
-  const std::string& prodid() const;
-  void set_prodid(const std::string& value);
-  void set_prodid(std::string&& value);
-  void set_prodid(const char* value);
-  void set_prodid(const char* value, size_t size);
-  std::string* mutable_prodid();
-  std::string* release_prodid();
-  void set_allocated_prodid(std::string* prodid);
+  // string symbol = 2;
+  void clear_symbol();
+  const std::string& symbol() const;
+  void set_symbol(const std::string& value);
+  void set_symbol(std::string&& value);
+  void set_symbol(const char* value);
+  void set_symbol(const char* value, size_t size);
+  std::string* mutable_symbol();
+  std::string* release_symbol();
+  void set_allocated_symbol(std::string* symbol);
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  std::string* unsafe_arena_release_prodid();
+  std::string* unsafe_arena_release_symbol();
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  void unsafe_arena_set_allocated_prodid(
-      std::string* prodid);
+  void unsafe_arena_set_allocated_symbol(
+      std::string* symbol);
   private:
-  const std::string& _internal_prodid() const;
-  void _internal_set_prodid(const std::string& value);
-  std::string* _internal_mutable_prodid();
+  const std::string& _internal_symbol() const;
+  void _internal_set_symbol(const std::string& value);
+  std::string* _internal_mutable_symbol();
   public:
 
   // string instID = 3;
@@ -448,8 +448,8 @@ class SubmitOrder PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stgyid_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr prodid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr styid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr symbol_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instid_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr exchid_;
   double price_;
@@ -576,61 +576,35 @@ class CancelOrder PROTOBUF_FINAL :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kStgyIDFieldNumber = 1,
-    kInstIDFieldNumber = 2,
-    kOrderRefFieldNumber = 3,
+    kStyIDFieldNumber = 1,
+    kOrderRefFieldNumber = 2,
   };
-  // string stgyID = 1;
-  void clear_stgyid();
-  const std::string& stgyid() const;
-  void set_stgyid(const std::string& value);
-  void set_stgyid(std::string&& value);
-  void set_stgyid(const char* value);
-  void set_stgyid(const char* value, size_t size);
-  std::string* mutable_stgyid();
-  std::string* release_stgyid();
-  void set_allocated_stgyid(std::string* stgyid);
+  // string styID = 1;
+  void clear_styid();
+  const std::string& styid() const;
+  void set_styid(const std::string& value);
+  void set_styid(std::string&& value);
+  void set_styid(const char* value);
+  void set_styid(const char* value, size_t size);
+  std::string* mutable_styid();
+  std::string* release_styid();
+  void set_allocated_styid(std::string* styid);
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  std::string* unsafe_arena_release_stgyid();
+  std::string* unsafe_arena_release_styid();
   GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
   "    string fields are deprecated and will be removed in a"
   "    future release.")
-  void unsafe_arena_set_allocated_stgyid(
-      std::string* stgyid);
+  void unsafe_arena_set_allocated_styid(
+      std::string* styid);
   private:
-  const std::string& _internal_stgyid() const;
-  void _internal_set_stgyid(const std::string& value);
-  std::string* _internal_mutable_stgyid();
+  const std::string& _internal_styid() const;
+  void _internal_set_styid(const std::string& value);
+  std::string* _internal_mutable_styid();
   public:
 
-  // string instID = 2;
-  void clear_instid();
-  const std::string& instid() const;
-  void set_instid(const std::string& value);
-  void set_instid(std::string&& value);
-  void set_instid(const char* value);
-  void set_instid(const char* value, size_t size);
-  std::string* mutable_instid();
-  std::string* release_instid();
-  void set_allocated_instid(std::string* instid);
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  std::string* unsafe_arena_release_instid();
-  GOOGLE_PROTOBUF_RUNTIME_DEPRECATED("The unsafe_arena_ accessors for"
-  "    string fields are deprecated and will be removed in a"
-  "    future release.")
-  void unsafe_arena_set_allocated_instid(
-      std::string* instid);
-  private:
-  const std::string& _internal_instid() const;
-  void _internal_set_instid(const std::string& value);
-  std::string* _internal_mutable_instid();
-  public:
-
-  // int64 orderRef = 3;
+  // int64 orderRef = 2;
   void clear_orderref();
   ::PROTOBUF_NAMESPACE_ID::int64 orderref() const;
   void set_orderref(::PROTOBUF_NAMESPACE_ID::int64 value);
@@ -646,8 +620,7 @@ class CancelOrder PROTOBUF_FINAL :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr stgyid_;
-  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr instid_;
+  ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr styid_;
   ::PROTOBUF_NAMESPACE_ID::int64 orderref_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_order_2eproto;
@@ -1230,166 +1203,166 @@ class RtnOrder PROTOBUF_FINAL :
 #endif  // __GNUC__
 // SubmitOrder
 
-// string stgyID = 1;
-inline void SubmitOrder::clear_stgyid() {
-  stgyid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+// string styID = 1;
+inline void SubmitOrder::clear_styid() {
+  styid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline const std::string& SubmitOrder::stgyid() const {
-  // @@protoc_insertion_point(field_get:Orders.SubmitOrder.stgyID)
-  return _internal_stgyid();
+inline const std::string& SubmitOrder::styid() const {
+  // @@protoc_insertion_point(field_get:Orders.SubmitOrder.styID)
+  return _internal_styid();
 }
-inline void SubmitOrder::set_stgyid(const std::string& value) {
-  _internal_set_stgyid(value);
-  // @@protoc_insertion_point(field_set:Orders.SubmitOrder.stgyID)
+inline void SubmitOrder::set_styid(const std::string& value) {
+  _internal_set_styid(value);
+  // @@protoc_insertion_point(field_set:Orders.SubmitOrder.styID)
 }
-inline std::string* SubmitOrder::mutable_stgyid() {
-  // @@protoc_insertion_point(field_mutable:Orders.SubmitOrder.stgyID)
-  return _internal_mutable_stgyid();
+inline std::string* SubmitOrder::mutable_styid() {
+  // @@protoc_insertion_point(field_mutable:Orders.SubmitOrder.styID)
+  return _internal_mutable_styid();
 }
-inline const std::string& SubmitOrder::_internal_stgyid() const {
-  return stgyid_.Get();
+inline const std::string& SubmitOrder::_internal_styid() const {
+  return styid_.Get();
 }
-inline void SubmitOrder::_internal_set_stgyid(const std::string& value) {
+inline void SubmitOrder::_internal_set_styid(const std::string& value) {
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void SubmitOrder::set_stgyid(std::string&& value) {
+inline void SubmitOrder::set_styid(std::string&& value) {
   
-  stgyid_.Set(
+  styid_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:Orders.SubmitOrder.stgyID)
+  // @@protoc_insertion_point(field_set_rvalue:Orders.SubmitOrder.styID)
 }
-inline void SubmitOrder::set_stgyid(const char* value) {
+inline void SubmitOrder::set_styid(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArena());
-  // @@protoc_insertion_point(field_set_char:Orders.SubmitOrder.stgyID)
+  // @@protoc_insertion_point(field_set_char:Orders.SubmitOrder.styID)
 }
-inline void SubmitOrder::set_stgyid(const char* value,
+inline void SubmitOrder::set_styid(const char* value,
     size_t size) {
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:Orders.SubmitOrder.stgyID)
+  // @@protoc_insertion_point(field_set_pointer:Orders.SubmitOrder.styID)
 }
-inline std::string* SubmitOrder::_internal_mutable_stgyid() {
+inline std::string* SubmitOrder::_internal_mutable_styid() {
   
-  return stgyid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  return styid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline std::string* SubmitOrder::release_stgyid() {
-  // @@protoc_insertion_point(field_release:Orders.SubmitOrder.stgyID)
-  return stgyid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+inline std::string* SubmitOrder::release_styid() {
+  // @@protoc_insertion_point(field_release:Orders.SubmitOrder.styID)
+  return styid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void SubmitOrder::set_allocated_stgyid(std::string* stgyid) {
-  if (stgyid != nullptr) {
+inline void SubmitOrder::set_allocated_styid(std::string* styid) {
+  if (styid != nullptr) {
     
   } else {
     
   }
-  stgyid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), stgyid,
+  styid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), styid,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:Orders.SubmitOrder.stgyID)
+  // @@protoc_insertion_point(field_set_allocated:Orders.SubmitOrder.styID)
 }
-inline std::string* SubmitOrder::unsafe_arena_release_stgyid() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.SubmitOrder.stgyID)
+inline std::string* SubmitOrder::unsafe_arena_release_styid() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.SubmitOrder.styID)
   GOOGLE_DCHECK(GetArena() != nullptr);
   
-  return stgyid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  return styid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       GetArena());
 }
-inline void SubmitOrder::unsafe_arena_set_allocated_stgyid(
-    std::string* stgyid) {
+inline void SubmitOrder::unsafe_arena_set_allocated_styid(
+    std::string* styid) {
   GOOGLE_DCHECK(GetArena() != nullptr);
-  if (stgyid != nullptr) {
+  if (styid != nullptr) {
     
   } else {
     
   }
-  stgyid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      stgyid, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.SubmitOrder.stgyID)
+  styid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      styid, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.SubmitOrder.styID)
 }
 
-// string prodID = 2;
-inline void SubmitOrder::clear_prodid() {
-  prodid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+// string symbol = 2;
+inline void SubmitOrder::clear_symbol() {
+  symbol_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline const std::string& SubmitOrder::prodid() const {
-  // @@protoc_insertion_point(field_get:Orders.SubmitOrder.prodID)
-  return _internal_prodid();
+inline const std::string& SubmitOrder::symbol() const {
+  // @@protoc_insertion_point(field_get:Orders.SubmitOrder.symbol)
+  return _internal_symbol();
 }
-inline void SubmitOrder::set_prodid(const std::string& value) {
-  _internal_set_prodid(value);
-  // @@protoc_insertion_point(field_set:Orders.SubmitOrder.prodID)
+inline void SubmitOrder::set_symbol(const std::string& value) {
+  _internal_set_symbol(value);
+  // @@protoc_insertion_point(field_set:Orders.SubmitOrder.symbol)
 }
-inline std::string* SubmitOrder::mutable_prodid() {
-  // @@protoc_insertion_point(field_mutable:Orders.SubmitOrder.prodID)
-  return _internal_mutable_prodid();
+inline std::string* SubmitOrder::mutable_symbol() {
+  // @@protoc_insertion_point(field_mutable:Orders.SubmitOrder.symbol)
+  return _internal_mutable_symbol();
 }
-inline const std::string& SubmitOrder::_internal_prodid() const {
-  return prodid_.Get();
+inline const std::string& SubmitOrder::_internal_symbol() const {
+  return symbol_.Get();
 }
-inline void SubmitOrder::_internal_set_prodid(const std::string& value) {
+inline void SubmitOrder::_internal_set_symbol(const std::string& value) {
   
-  prodid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+  symbol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void SubmitOrder::set_prodid(std::string&& value) {
+inline void SubmitOrder::set_symbol(std::string&& value) {
   
-  prodid_.Set(
+  symbol_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:Orders.SubmitOrder.prodID)
+  // @@protoc_insertion_point(field_set_rvalue:Orders.SubmitOrder.symbol)
 }
-inline void SubmitOrder::set_prodid(const char* value) {
+inline void SubmitOrder::set_symbol(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  prodid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+  symbol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArena());
-  // @@protoc_insertion_point(field_set_char:Orders.SubmitOrder.prodID)
+  // @@protoc_insertion_point(field_set_char:Orders.SubmitOrder.symbol)
 }
-inline void SubmitOrder::set_prodid(const char* value,
+inline void SubmitOrder::set_symbol(const char* value,
     size_t size) {
   
-  prodid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  symbol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:Orders.SubmitOrder.prodID)
+  // @@protoc_insertion_point(field_set_pointer:Orders.SubmitOrder.symbol)
 }
-inline std::string* SubmitOrder::_internal_mutable_prodid() {
+inline std::string* SubmitOrder::_internal_mutable_symbol() {
   
-  return prodid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  return symbol_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline std::string* SubmitOrder::release_prodid() {
-  // @@protoc_insertion_point(field_release:Orders.SubmitOrder.prodID)
-  return prodid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+inline std::string* SubmitOrder::release_symbol() {
+  // @@protoc_insertion_point(field_release:Orders.SubmitOrder.symbol)
+  return symbol_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void SubmitOrder::set_allocated_prodid(std::string* prodid) {
-  if (prodid != nullptr) {
+inline void SubmitOrder::set_allocated_symbol(std::string* symbol) {
+  if (symbol != nullptr) {
     
   } else {
     
   }
-  prodid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), prodid,
+  symbol_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), symbol,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:Orders.SubmitOrder.prodID)
+  // @@protoc_insertion_point(field_set_allocated:Orders.SubmitOrder.symbol)
 }
-inline std::string* SubmitOrder::unsafe_arena_release_prodid() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.SubmitOrder.prodID)
+inline std::string* SubmitOrder::unsafe_arena_release_symbol() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.SubmitOrder.symbol)
   GOOGLE_DCHECK(GetArena() != nullptr);
   
-  return prodid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  return symbol_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       GetArena());
 }
-inline void SubmitOrder::unsafe_arena_set_allocated_prodid(
-    std::string* prodid) {
+inline void SubmitOrder::unsafe_arena_set_allocated_symbol(
+    std::string* symbol) {
   GOOGLE_DCHECK(GetArena() != nullptr);
-  if (prodid != nullptr) {
+  if (symbol != nullptr) {
     
   } else {
     
   }
-  prodid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      prodid, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.SubmitOrder.prodID)
+  symbol_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      symbol, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.SubmitOrder.symbol)
 }
 
 // string instID = 3;
@@ -1678,169 +1651,88 @@ inline void SubmitOrder::set_orderref(::PROTOBUF_NAMESPACE_ID::int64 value) {
 
 // CancelOrder
 
-// string stgyID = 1;
-inline void CancelOrder::clear_stgyid() {
-  stgyid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+// string styID = 1;
+inline void CancelOrder::clear_styid() {
+  styid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline const std::string& CancelOrder::stgyid() const {
-  // @@protoc_insertion_point(field_get:Orders.CancelOrder.stgyID)
-  return _internal_stgyid();
+inline const std::string& CancelOrder::styid() const {
+  // @@protoc_insertion_point(field_get:Orders.CancelOrder.styID)
+  return _internal_styid();
 }
-inline void CancelOrder::set_stgyid(const std::string& value) {
-  _internal_set_stgyid(value);
-  // @@protoc_insertion_point(field_set:Orders.CancelOrder.stgyID)
+inline void CancelOrder::set_styid(const std::string& value) {
+  _internal_set_styid(value);
+  // @@protoc_insertion_point(field_set:Orders.CancelOrder.styID)
 }
-inline std::string* CancelOrder::mutable_stgyid() {
-  // @@protoc_insertion_point(field_mutable:Orders.CancelOrder.stgyID)
-  return _internal_mutable_stgyid();
+inline std::string* CancelOrder::mutable_styid() {
+  // @@protoc_insertion_point(field_mutable:Orders.CancelOrder.styID)
+  return _internal_mutable_styid();
 }
-inline const std::string& CancelOrder::_internal_stgyid() const {
-  return stgyid_.Get();
+inline const std::string& CancelOrder::_internal_styid() const {
+  return styid_.Get();
 }
-inline void CancelOrder::_internal_set_stgyid(const std::string& value) {
+inline void CancelOrder::_internal_set_styid(const std::string& value) {
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
 }
-inline void CancelOrder::set_stgyid(std::string&& value) {
+inline void CancelOrder::set_styid(std::string&& value) {
   
-  stgyid_.Set(
+  styid_.Set(
     &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:Orders.CancelOrder.stgyID)
+  // @@protoc_insertion_point(field_set_rvalue:Orders.CancelOrder.styID)
 }
-inline void CancelOrder::set_stgyid(const char* value) {
+inline void CancelOrder::set_styid(const char* value) {
   GOOGLE_DCHECK(value != nullptr);
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
               GetArena());
-  // @@protoc_insertion_point(field_set_char:Orders.CancelOrder.stgyID)
+  // @@protoc_insertion_point(field_set_char:Orders.CancelOrder.styID)
 }
-inline void CancelOrder::set_stgyid(const char* value,
+inline void CancelOrder::set_styid(const char* value,
     size_t size) {
   
-  stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
+  styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
       reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:Orders.CancelOrder.stgyID)
+  // @@protoc_insertion_point(field_set_pointer:Orders.CancelOrder.styID)
 }
-inline std::string* CancelOrder::_internal_mutable_stgyid() {
+inline std::string* CancelOrder::_internal_mutable_styid() {
   
-  return stgyid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  return styid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline std::string* CancelOrder::release_stgyid() {
-  // @@protoc_insertion_point(field_release:Orders.CancelOrder.stgyID)
-  return stgyid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+inline std::string* CancelOrder::release_styid() {
+  // @@protoc_insertion_point(field_release:Orders.CancelOrder.styID)
+  return styid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
 }
-inline void CancelOrder::set_allocated_stgyid(std::string* stgyid) {
-  if (stgyid != nullptr) {
+inline void CancelOrder::set_allocated_styid(std::string* styid) {
+  if (styid != nullptr) {
     
   } else {
     
   }
-  stgyid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), stgyid,
+  styid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), styid,
       GetArena());
-  // @@protoc_insertion_point(field_set_allocated:Orders.CancelOrder.stgyID)
+  // @@protoc_insertion_point(field_set_allocated:Orders.CancelOrder.styID)
 }
-inline std::string* CancelOrder::unsafe_arena_release_stgyid() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.CancelOrder.stgyID)
+inline std::string* CancelOrder::unsafe_arena_release_styid() {
+  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.CancelOrder.styID)
   GOOGLE_DCHECK(GetArena() != nullptr);
   
-  return stgyid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+  return styid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
       GetArena());
 }
-inline void CancelOrder::unsafe_arena_set_allocated_stgyid(
-    std::string* stgyid) {
+inline void CancelOrder::unsafe_arena_set_allocated_styid(
+    std::string* styid) {
   GOOGLE_DCHECK(GetArena() != nullptr);
-  if (stgyid != nullptr) {
+  if (styid != nullptr) {
     
   } else {
     
   }
-  stgyid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      stgyid, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.CancelOrder.stgyID)
+  styid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
+      styid, GetArena());
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.CancelOrder.styID)
 }
 
-// string instID = 2;
-inline void CancelOrder::clear_instid() {
-  instid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline const std::string& CancelOrder::instid() const {
-  // @@protoc_insertion_point(field_get:Orders.CancelOrder.instID)
-  return _internal_instid();
-}
-inline void CancelOrder::set_instid(const std::string& value) {
-  _internal_set_instid(value);
-  // @@protoc_insertion_point(field_set:Orders.CancelOrder.instID)
-}
-inline std::string* CancelOrder::mutable_instid() {
-  // @@protoc_insertion_point(field_mutable:Orders.CancelOrder.instID)
-  return _internal_mutable_instid();
-}
-inline const std::string& CancelOrder::_internal_instid() const {
-  return instid_.Get();
-}
-inline void CancelOrder::_internal_set_instid(const std::string& value) {
-  
-  instid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), value, GetArena());
-}
-inline void CancelOrder::set_instid(std::string&& value) {
-  
-  instid_.Set(
-    &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::move(value), GetArena());
-  // @@protoc_insertion_point(field_set_rvalue:Orders.CancelOrder.instID)
-}
-inline void CancelOrder::set_instid(const char* value) {
-  GOOGLE_DCHECK(value != nullptr);
-  
-  instid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(value),
-              GetArena());
-  // @@protoc_insertion_point(field_set_char:Orders.CancelOrder.instID)
-}
-inline void CancelOrder::set_instid(const char* value,
-    size_t size) {
-  
-  instid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), ::std::string(
-      reinterpret_cast<const char*>(value), size), GetArena());
-  // @@protoc_insertion_point(field_set_pointer:Orders.CancelOrder.instID)
-}
-inline std::string* CancelOrder::_internal_mutable_instid() {
-  
-  return instid_.Mutable(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline std::string* CancelOrder::release_instid() {
-  // @@protoc_insertion_point(field_release:Orders.CancelOrder.instID)
-  return instid_.Release(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-}
-inline void CancelOrder::set_allocated_instid(std::string* instid) {
-  if (instid != nullptr) {
-    
-  } else {
-    
-  }
-  instid_.SetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), instid,
-      GetArena());
-  // @@protoc_insertion_point(field_set_allocated:Orders.CancelOrder.instID)
-}
-inline std::string* CancelOrder::unsafe_arena_release_instid() {
-  // @@protoc_insertion_point(field_unsafe_arena_release:Orders.CancelOrder.instID)
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  
-  return instid_.UnsafeArenaRelease(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      GetArena());
-}
-inline void CancelOrder::unsafe_arena_set_allocated_instid(
-    std::string* instid) {
-  GOOGLE_DCHECK(GetArena() != nullptr);
-  if (instid != nullptr) {
-    
-  } else {
-    
-  }
-  instid_.UnsafeArenaSetAllocated(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(),
-      instid, GetArena());
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:Orders.CancelOrder.instID)
-}
-
-// int64 orderRef = 3;
+// int64 orderRef = 2;
 inline void CancelOrder::clear_orderref() {
   orderref_ = PROTOBUF_LONGLONG(0);
 }

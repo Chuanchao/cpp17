@@ -32,7 +32,7 @@ namespace gateway {
         int SessionID{0};
         int64_t maxorderref{0};
         std::atomic<int> requestID{0};
-        std::atomic<bool> isConnected{0};
+        std::atomic<bool> isConnected{false};
     };
 
     template<typename T>

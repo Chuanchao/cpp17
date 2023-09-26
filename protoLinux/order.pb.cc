@@ -98,8 +98,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_order_2eproto::offsets[] PROTO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, stgyid_),
-  PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, prodid_),
+  PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, styid_),
+  PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, symbol_),
   PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, instid_),
   PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, amount_),
   PROTOBUF_FIELD_OFFSET(::Orders::SubmitOrder, price_),
@@ -113,8 +113,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_order_2eproto::offsets[] PROTO
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  PROTOBUF_FIELD_OFFSET(::Orders::CancelOrder, stgyid_),
-  PROTOBUF_FIELD_OFFSET(::Orders::CancelOrder, instid_),
+  PROTOBUF_FIELD_OFFSET(::Orders::CancelOrder, styid_),
   PROTOBUF_FIELD_OFFSET(::Orders::CancelOrder, orderref_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::Orders::RtnTrade, _internal_metadata_),
@@ -147,8 +146,8 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_order_2eproto::offsets[] PROTO
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::Orders::SubmitOrder)},
   { 15, -1, sizeof(::Orders::CancelOrder)},
-  { 23, -1, sizeof(::Orders::RtnTrade)},
-  { 37, -1, sizeof(::Orders::RtnOrder)},
+  { 22, -1, sizeof(::Orders::RtnTrade)},
+  { 36, -1, sizeof(::Orders::RtnOrder)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -159,34 +158,33 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
 };
 
 const char descriptor_table_protodef_order_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\013order.proto\022\006Orders\"\362\001\n\013SubmitOrder\022\016\n"
-  "\006stgyID\030\001 \001(\t\022\016\n\006prodID\030\002 \001(\t\022\016\n\006instID\030"
-  "\003 \001(\t\022\016\n\006amount\030\004 \001(\005\022\r\n\005price\030\005 \001(\001\022\"\n\007"
-  "order_t\030\006 \001(\0162\021.Orders.OrderType\022&\n\006stgy"
-  "_d\030\007 \001(\0162\026.Orders.OrderDirection\022&\n\006real"
-  "_d\030\010 \001(\0162\026.Orders.OrderDirection\022\016\n\006exch"
-  "Id\030\t \001(\t\022\020\n\010orderRef\030\n \001(\003\"\?\n\013CancelOrde"
-  "r\022\016\n\006stgyID\030\001 \001(\t\022\016\n\006instID\030\002 \001(\t\022\020\n\010ord"
-  "erRef\030\003 \001(\003\"\320\001\n\010RtnTrade\022\016\n\006stgyID\030\001 \001(\t"
-  "\022\016\n\006prodID\030\002 \001(\t\022\016\n\006instID\030\003 \001(\t\022\024\n\014trad"
-  "edAmount\030\004 \001(\005\022\020\n\010avgPrice\030\005 \001(\001\022\"\n\007orde"
-  "r_t\030\006 \001(\0162\021.Orders.OrderType\022&\n\006real_d\030\007"
-  " \001(\0162\026.Orders.OrderDirection\022\016\n\006exchId\030\t"
-  " \001(\t\022\020\n\010orderRef\030\n \001(\003\"\321\001\n\010RtnOrder\022\016\n\006s"
-  "tgyID\030\001 \001(\t\022\016\n\006prodID\030\002 \001(\t\022\016\n\006instID\030\003 "
-  "\001(\t\022#\n\006status\030\005 \001(\0162\023.Orders.OrderStatus"
-  "\022&\n\006stgy_d\030\006 \001(\0162\026.Orders.OrderDirection"
-  "\022&\n\006real_d\030\007 \001(\0162\026.Orders.OrderDirection"
-  "\022\016\n\006exchId\030\010 \001(\t\022\020\n\010orderRef\030\t \001(\003*)\n\tOr"
-  "derType\022\r\n\tIOC_ORDER\020\000\022\r\n\tGFD_ORDER\020\001*\245\001"
-  "\n\016OrderDirection\022\r\n\tOPEN_LONG\020\000\022\016\n\nOPEN_"
-  "SHORT\020\001\022\016\n\nCLOSE_LONG\020\002\022\017\n\013CLOSE_SHORT\020\003"
-  "\022\024\n\020CLOSE_TODAY_LONG\020\004\022\025\n\021CLOSE_TODAY_SH"
-  "ORT\020\005\022\021\n\rUNKNOWN_TRADE\020\006\022\023\n\017ORDER_TASK_B"
-  "UTT\020\007*q\n\013OrderStatus\022\016\n\nWORK_ORDER\020\000\022\016\n\n"
-  "DONE_ORDER\020\001\022\030\n\024RISKCONTROL_REJECTED\020\002\022\025"
-  "\n\021EXCHANGE_REJECTED\020\003\022\021\n\rNETWORK_ERROR\020\004"
-  "b\006proto3"
+  "\n\013order.proto\022\006Orders\"\361\001\n\013SubmitOrder\022\r\n"
+  "\005styID\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\022\016\n\006instID\030\003"
+  " \001(\t\022\016\n\006amount\030\004 \001(\005\022\r\n\005price\030\005 \001(\001\022\"\n\007o"
+  "rder_t\030\006 \001(\0162\021.Orders.OrderType\022&\n\006stgy_"
+  "d\030\007 \001(\0162\026.Orders.OrderDirection\022&\n\006real_"
+  "d\030\010 \001(\0162\026.Orders.OrderDirection\022\016\n\006exchI"
+  "d\030\t \001(\t\022\020\n\010orderRef\030\n \001(\003\".\n\013CancelOrder"
+  "\022\r\n\005styID\030\001 \001(\t\022\020\n\010orderRef\030\002 \001(\003\"\320\001\n\010Rt"
+  "nTrade\022\016\n\006stgyID\030\001 \001(\t\022\016\n\006prodID\030\002 \001(\t\022\016"
+  "\n\006instID\030\003 \001(\t\022\024\n\014tradedAmount\030\004 \001(\005\022\020\n\010"
+  "avgPrice\030\005 \001(\001\022\"\n\007order_t\030\006 \001(\0162\021.Orders"
+  ".OrderType\022&\n\006real_d\030\007 \001(\0162\026.Orders.Orde"
+  "rDirection\022\016\n\006exchId\030\t \001(\t\022\020\n\010orderRef\030\n"
+  " \001(\003\"\321\001\n\010RtnOrder\022\016\n\006stgyID\030\001 \001(\t\022\016\n\006pro"
+  "dID\030\002 \001(\t\022\016\n\006instID\030\003 \001(\t\022#\n\006status\030\005 \001("
+  "\0162\023.Orders.OrderStatus\022&\n\006stgy_d\030\006 \001(\0162\026"
+  ".Orders.OrderDirection\022&\n\006real_d\030\007 \001(\0162\026"
+  ".Orders.OrderDirection\022\016\n\006exchId\030\010 \001(\t\022\020"
+  "\n\010orderRef\030\t \001(\003*)\n\tOrderType\022\r\n\tIOC_ORD"
+  "ER\020\000\022\r\n\tGFD_ORDER\020\001*\245\001\n\016OrderDirection\022\023"
+  "\n\017ORDER_TASK_BUTT\020\000\022\r\n\tOPEN_LONG\020\001\022\016\n\nOP"
+  "EN_SHORT\020\002\022\016\n\nCLOSE_LONG\020\003\022\017\n\013CLOSE_SHOR"
+  "T\020\004\022\024\n\020CLOSE_TODAY_LONG\020\005\022\025\n\021CLOSE_TODAY"
+  "_SHORT\020\006\022\021\n\rUNKNOWN_TRADE\020\007*q\n\013OrderStat"
+  "us\022\021\n\rNETWORK_ERROR\020\000\022\016\n\nWORK_ORDER\020\001\022\016\n"
+  "\nDONE_ORDER\020\002\022\030\n\024RISKCONTROL_REJECTED\020\003\022"
+  "\025\n\021EXCHANGE_REJECTED\020\004b\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_order_2eproto_deps[1] = {
 };
@@ -198,7 +196,7 @@ static ::PROTOBUF_NAMESPACE_ID::internal::SCCInfoBase*const descriptor_table_ord
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_order_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_order_2eproto = {
-  false, false, descriptor_table_protodef_order_2eproto, "order.proto", 1088,
+  false, false, descriptor_table_protodef_order_2eproto, "order.proto", 1070,
   &descriptor_table_order_2eproto_once, descriptor_table_order_2eproto_sccs, descriptor_table_order_2eproto_deps, 4, 0,
   schemas, file_default_instances, TableStruct_order_2eproto::offsets,
   file_level_metadata_order_2eproto, 4, file_level_enum_descriptors_order_2eproto, file_level_service_descriptors_order_2eproto,
@@ -276,14 +274,14 @@ SubmitOrder::SubmitOrder(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 SubmitOrder::SubmitOrder(const SubmitOrder& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  stgyid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_stgyid().empty()) {
-    stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_stgyid(),
+  styid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_styid().empty()) {
+    styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_styid(),
       GetArena());
   }
-  prodid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_prodid().empty()) {
-    prodid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_prodid(),
+  symbol_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_symbol().empty()) {
+    symbol_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_symbol(),
       GetArena());
   }
   instid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
@@ -304,8 +302,8 @@ SubmitOrder::SubmitOrder(const SubmitOrder& from)
 
 void SubmitOrder::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_SubmitOrder_order_2eproto.base);
-  stgyid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  prodid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  styid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  symbol_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   instid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   exchid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   ::memset(&price_, 0, static_cast<size_t>(
@@ -321,8 +319,8 @@ SubmitOrder::~SubmitOrder() {
 
 void SubmitOrder::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  stgyid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  prodid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  styid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  symbol_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   instid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   exchid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
@@ -348,8 +346,8 @@ void SubmitOrder::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  stgyid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  prodid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  styid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  symbol_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   instid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   exchid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::memset(&price_, 0, static_cast<size_t>(
@@ -366,21 +364,21 @@ const char* SubmitOrder::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string stgyID = 1;
+      // string styID = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_stgyid();
+          auto str = _internal_mutable_styid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.SubmitOrder.stgyID"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.SubmitOrder.styID"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string prodID = 2;
+      // string symbol = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_prodid();
+          auto str = _internal_mutable_symbol();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.SubmitOrder.prodID"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.SubmitOrder.symbol"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -475,24 +473,24 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string stgyID = 1;
-  if (this->stgyid().size() > 0) {
+  // string styID = 1;
+  if (this->styid().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_stgyid().data(), static_cast<int>(this->_internal_stgyid().length()),
+      this->_internal_styid().data(), static_cast<int>(this->_internal_styid().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Orders.SubmitOrder.stgyID");
+      "Orders.SubmitOrder.styID");
     target = stream->WriteStringMaybeAliased(
-        1, this->_internal_stgyid(), target);
+        1, this->_internal_styid(), target);
   }
 
-  // string prodID = 2;
-  if (this->prodid().size() > 0) {
+  // string symbol = 2;
+  if (this->symbol().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_prodid().data(), static_cast<int>(this->_internal_prodid().length()),
+      this->_internal_symbol().data(), static_cast<int>(this->_internal_symbol().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Orders.SubmitOrder.prodID");
+      "Orders.SubmitOrder.symbol");
     target = stream->WriteStringMaybeAliased(
-        2, this->_internal_prodid(), target);
+        2, this->_internal_symbol(), target);
   }
 
   // string instID = 3;
@@ -570,18 +568,18 @@ size_t SubmitOrder::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string stgyID = 1;
-  if (this->stgyid().size() > 0) {
+  // string styID = 1;
+  if (this->styid().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_stgyid());
+        this->_internal_styid());
   }
 
-  // string prodID = 2;
-  if (this->prodid().size() > 0) {
+  // string symbol = 2;
+  if (this->symbol().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_prodid());
+        this->_internal_symbol());
   }
 
   // string instID = 3;
@@ -666,11 +664,11 @@ void SubmitOrder::MergeFrom(const SubmitOrder& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.stgyid().size() > 0) {
-    _internal_set_stgyid(from._internal_stgyid());
+  if (from.styid().size() > 0) {
+    _internal_set_styid(from._internal_styid());
   }
-  if (from.prodid().size() > 0) {
-    _internal_set_prodid(from._internal_prodid());
+  if (from.symbol().size() > 0) {
+    _internal_set_symbol(from._internal_symbol());
   }
   if (from.instid().size() > 0) {
     _internal_set_instid(from._internal_instid());
@@ -719,8 +717,8 @@ bool SubmitOrder::IsInitialized() const {
 void SubmitOrder::InternalSwap(SubmitOrder* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  stgyid_.Swap(&other->stgyid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  prodid_.Swap(&other->prodid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  styid_.Swap(&other->styid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  symbol_.Swap(&other->symbol_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   instid_.Swap(&other->instid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   exchid_.Swap(&other->exchid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
@@ -753,14 +751,9 @@ CancelOrder::CancelOrder(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 CancelOrder::CancelOrder(const CancelOrder& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  stgyid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_stgyid().empty()) {
-    stgyid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_stgyid(),
-      GetArena());
-  }
-  instid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  if (!from._internal_instid().empty()) {
-    instid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_instid(),
+  styid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  if (!from._internal_styid().empty()) {
+    styid_.Set(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), from._internal_styid(),
       GetArena());
   }
   orderref_ = from.orderref_;
@@ -769,8 +762,7 @@ CancelOrder::CancelOrder(const CancelOrder& from)
 
 void CancelOrder::SharedCtor() {
   ::PROTOBUF_NAMESPACE_ID::internal::InitSCC(&scc_info_CancelOrder_order_2eproto.base);
-  stgyid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  instid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  styid_.UnsafeSetDefault(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
   orderref_ = PROTOBUF_LONGLONG(0);
 }
 
@@ -782,8 +774,7 @@ CancelOrder::~CancelOrder() {
 
 void CancelOrder::SharedDtor() {
   GOOGLE_DCHECK(GetArena() == nullptr);
-  stgyid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
-  instid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
+  styid_.DestroyNoArena(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited());
 }
 
 void CancelOrder::ArenaDtor(void* object) {
@@ -807,8 +798,7 @@ void CancelOrder::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  stgyid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  instid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  styid_.ClearToEmpty(&::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   orderref_ = PROTOBUF_LONGLONG(0);
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
@@ -821,27 +811,18 @@ const char* CancelOrder::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     CHK_(ptr);
     switch (tag >> 3) {
-      // string stgyID = 1;
+      // string styID = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
-          auto str = _internal_mutable_stgyid();
+          auto str = _internal_mutable_styid();
           ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.CancelOrder.stgyID"));
+          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.CancelOrder.styID"));
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // string instID = 2;
+      // int64 orderRef = 2;
       case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
-          auto str = _internal_mutable_instid();
-          ptr = ::PROTOBUF_NAMESPACE_ID::internal::InlineGreedyStringParser(str, ptr, ctx);
-          CHK_(::PROTOBUF_NAMESPACE_ID::internal::VerifyUTF8(str, "Orders.CancelOrder.instID"));
-          CHK_(ptr);
-        } else goto handle_unusual;
-        continue;
-      // int64 orderRef = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 24)) {
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           orderref_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
@@ -874,30 +855,20 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // string stgyID = 1;
-  if (this->stgyid().size() > 0) {
+  // string styID = 1;
+  if (this->styid().size() > 0) {
     ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_stgyid().data(), static_cast<int>(this->_internal_stgyid().length()),
+      this->_internal_styid().data(), static_cast<int>(this->_internal_styid().length()),
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Orders.CancelOrder.stgyID");
+      "Orders.CancelOrder.styID");
     target = stream->WriteStringMaybeAliased(
-        1, this->_internal_stgyid(), target);
+        1, this->_internal_styid(), target);
   }
 
-  // string instID = 2;
-  if (this->instid().size() > 0) {
-    ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::VerifyUtf8String(
-      this->_internal_instid().data(), static_cast<int>(this->_internal_instid().length()),
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SERIALIZE,
-      "Orders.CancelOrder.instID");
-    target = stream->WriteStringMaybeAliased(
-        2, this->_internal_instid(), target);
-  }
-
-  // int64 orderRef = 3;
+  // int64 orderRef = 2;
   if (this->orderref() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(3, this->_internal_orderref(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt64ToArray(2, this->_internal_orderref(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -916,21 +887,14 @@ size_t CancelOrder::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string stgyID = 1;
-  if (this->stgyid().size() > 0) {
+  // string styID = 1;
+  if (this->styid().size() > 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_stgyid());
+        this->_internal_styid());
   }
 
-  // string instID = 2;
-  if (this->instid().size() > 0) {
-    total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::StringSize(
-        this->_internal_instid());
-  }
-
-  // int64 orderRef = 3;
+  // int64 orderRef = 2;
   if (this->orderref() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int64Size(
@@ -968,11 +932,8 @@ void CancelOrder::MergeFrom(const CancelOrder& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from.stgyid().size() > 0) {
-    _internal_set_stgyid(from._internal_stgyid());
-  }
-  if (from.instid().size() > 0) {
-    _internal_set_instid(from._internal_instid());
+  if (from.styid().size() > 0) {
+    _internal_set_styid(from._internal_styid());
   }
   if (from.orderref() != 0) {
     _internal_set_orderref(from._internal_orderref());
@@ -1000,8 +961,7 @@ bool CancelOrder::IsInitialized() const {
 void CancelOrder::InternalSwap(CancelOrder* other) {
   using std::swap;
   _internal_metadata_.Swap<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(&other->_internal_metadata_);
-  stgyid_.Swap(&other->stgyid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
-  instid_.Swap(&other->instid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
+  styid_.Swap(&other->styid_, &::PROTOBUF_NAMESPACE_ID::internal::GetEmptyStringAlreadyInited(), GetArena());
   swap(orderref_, other->orderref_);
 }
 

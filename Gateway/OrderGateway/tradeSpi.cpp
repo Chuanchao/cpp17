@@ -135,7 +135,7 @@ namespace gateway{
             _status.frontID = pRspUserLogin->FrontID;
             _status.SessionID = pRspUserLogin->SessionID;
             _status.maxorderref = atoi(pRspUserLogin->MaxOrderRef);
-            //_logger->info("maxorderref = {},{}",_maxorderref,pRspUserLogin->MaxOrderRef);
+            _logger->info("maxorderref = {}",pRspUserLogin->MaxOrderRef);
             _login.status = true;
             _login.cv.notify_all();
         }
